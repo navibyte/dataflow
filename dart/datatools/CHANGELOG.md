@@ -1,0 +1,79 @@
+## 0.6.0
+
+- BETA version 0.6.0 with minor breaking changes
+- The Github repository changed as the package actually has nothing geospatial
+  - Old : https://github.com/navibyte/geospatial
+  - New : https://github.com/navibyte/dataflow
+  - Still some issues on the old repo, new issues are managed on the new home
+  - Code history for versions 0.5.0 and before that on the old repository
+  - Dart packages owned by repositories after these changes:
+    - https://github.com/navibyte/dataflow : attributes, datatools 
+    - https://github.com/navibyte/geospatial : geocore, geodata
+- [Lint rules and analysis options updated](https://github.com/navibyte/geospatial/issues/8)
+- Also `implicit-casts` and `implicit-dynamic` to false requiring code changes
+- [UriResolver moved and new Anchor interface](https://github.com/navibyte/geospatial/issues/20)
+- [New package "datatools/base_api.dart"](https://github.com/navibyte/geospatial/issues/21)
+- Controller interface method: `C headers(Map<String, String>? headers);`
+  - changed `headers` to required: `C headers(Map<String, String> headers);`
+- many other smaller changes and optimizations partially due issues #8 
+
+## 0.5.0
+
+- BETA version 0.5.0 with stable null-safety requiring the stable Dart 2.12
+
+## 0.5.0-nullsafety.0
+
+- BETA version 0.5.0 with breaking changes compared to 0.4.0
+- Quite extensive refactoring and partially fully rewritten
+- New dependency: `path` (^1.8.0-nullsafety.3)
+- Changed dependency: `http_parser` (^4.0.0-nullsafety)
+- Changed dependency: `http` (^0.13.0-nullsafety.0)
+- [Link meta data lists #17](https://github.com/navibyte/geospatial/issues/17)
+- [Client-side support for calling reading GeoJSON web or file resource #10](https://github.com/navibyte/geospatial/issues/10)
+- Mini-libraries provided by the package refactored:
+  - fetch_api
+    - Fetch API abstraction (content, control data, exceptions, fetch interface).
+  - fetch_file
+    - Fetch API binding to file resources.
+  - fetch_http
+    - Fetch API binding to HTTP and HTTPS resources.
+  - meta_link
+    - Metadata structures to handle links.
+- Code also restructured under lib/src
+  - api
+    - content
+    - control
+    - exceptions
+    - fetch
+    - resolver
+  - file
+    - fetch
+  - http
+    - fetch
+  - meta
+    - link
+          
+## 0.4.0-nullsafety.0
+
+- Initial alpha version 0.4.0 (version starting with aligment to other packages)
+- Designed for null-safety (requires sdk: '>=2.12.0-0 <3.0.0')
+- Uses as dependency: `equatable` (^2.0.0-nullsafety.0)
+- Uses as dependency: `meta` (^1.3.0-nullsafety.6)
+- Uses as dependency: `http` (^0.12.2)
+- Uses as dependency: `http_parser` (^3.1.4)
+- "client", "client_http" and "utils" libs were moved here from `geodata`
+- "meta" with Link class was moved here from `geocore`
+- Structure of lib/src folder:
+  - client
+    - base
+    - http
+  - meta
+    - link
+  - utils
+    - format
+- Mini-libraries provided by the package:
+  - 'package:datatools/client_base.dart'
+  - 'package:datatools/client_http.dart'
+  - 'package:datatools/meta_link.dart'
+- The whole library is available by:
+  - 'package:datatools/datatools.dart'

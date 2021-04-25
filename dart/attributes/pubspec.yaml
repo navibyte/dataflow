@@ -1,0 +1,16 @@
+name: attributes
+description: Generic data structures for values, properties, identifiers and entities with type and null safe accessors.
+version: 0.6.0
+repository: https://github.com/navibyte/dataflow
+homepage: https://github.com/navibyte/dataflow/tree/main/dart/attributes
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  equatable: ^2.0.0
+  meta: ^1.3.0
+  intl: ^0.17.0
+
+dev_dependencies:
+  test: ^1.16.4
