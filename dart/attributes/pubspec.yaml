@@ -1,6 +1,6 @@
 name: attributes
-description: Generic data structures for values, properties, identifiers and entities with type and null safe accessors.
-version: 0.6.0
+description: Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
+version: 0.7.2
 repository: https://github.com/navibyte/dataflow
 homepage: https://github.com/navibyte/dataflow/tree/main/dart/attributes
 
@@ -13,4 +13,5 @@ dependencies:
   intl: ^0.17.0
 
 dev_dependencies:
+  lints: ^1.0.1
   test: ^1.16.4

@@ -24,8 +24,8 @@ abstract class Links {
   factory Links.view(Iterable<Link> source) = _Links;
 
   /// Metadata container for links from JSON objects.
-  factory Links.fromJson(Iterable json) => Links.view(
-      json.map((dynamic e) => Link.fromJson(e as Map<String, dynamic>)));
+  factory Links.fromJson(Iterable<Object?> json) =>
+      Links.view(json.map((e) => Link.fromJson(e as Map<String, Object?>)));
 
   /// All links iterated.
   Iterable<Link> get all;

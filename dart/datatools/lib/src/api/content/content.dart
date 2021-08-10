@@ -9,10 +9,13 @@ import '../address.dart';
 import 'body.dart';
 import 'head.dart';
 
-/// Content represents data entity from some resource.
+/// Content represents a data entity.
 abstract class Content extends Head implements Anchor, Body {
   const Content();
 
   /// Returns a future for a single-subscription stream with content data.
+  ///
+  /// This is deprecated, may be removed in future.
+  @Deprecated('Use byteStream accessor instead.')
   Future<Stream<List<int>>> get stream;
 }

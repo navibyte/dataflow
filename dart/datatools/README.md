@@ -1,12 +1,9 @@
-# Datatools
+<h2 align="center">Unified Fetch API for HTTP and files</h2>
 
 [![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-**Datatools** is a library package for [Dart](https://dart.dev/) and 
-[Flutter](https://flutter.dev/) mobile developers to help fetching data from
-HTTP and file resources and other data sources.
-
 Key features:
+* Fetch data from HTTP and file resources and other data sources.
 * Fetch API abstraction (content, control data, exceptions, fetch interface).
 * Fetch API binding to HTTP and HTTPS resources (using [http](https://pub.dev/packages/http)).
 * Fetch API binding to file resources (based on `dart:io`).
@@ -40,7 +37,7 @@ Setting up a HTTP fetcher, fetching JSON, and also handling errors:
     // do something with JSON data...
   } on OriginException catch (e) {
     // handle exceptions ("not found" etc.) issued by origin server
-  } on Exception catch (e) {
+  } catch (e) {
     // handle other exceptions, like caused by client code 
   }
 ```
@@ -58,7 +55,7 @@ The package supports using the same Fetch API interface also for reading files:
     // do something with JSON data...
   } on OriginException catch (e) {
     // handle exceptions ("not found" etc.) issued by file system
-  } on Exception catch (e) {
+  } catch (e) {
     // handle other exceptions, like caused by client code 
   }
 ```
@@ -90,7 +87,11 @@ abstract class FetchApi<C extends Content> {
   Future<Uint8List> fetchBytes(Uri reference);
 
   /// Fetch content body as JSON data from a resource identified by [reference].
-  Future<dynamic> fetchJson(Uri reference);
+  ///
+  /// An optional [reviver] function is applied when decoding json string data.
+  /// See `JsonCodec` of the `dart:convert` package for more information.
+  Future<dynamic> fetchJson(Uri reference,
+      {Object? Function(Object? key, Object? value)? reviver});
 }
 ```
 
@@ -122,11 +123,11 @@ Key methods and properties available on the `Content` interface are:
   /// `ByteData.sublistView` for reference.
   Future<ByteData> byteData([int start = 0, int? end]);
 
+  /// Returns content body as a single-subscription byte stream.
+  Stream<List<int>> byteStream();
+
   /// Reads and decodes content body as a JSON object, returned in a future.
    Future<dynamic> decodeJson();
-
-  /// Returns a future for a single-subscription stream with content data.
-  Future<Stream<List<int>>> get stream;
 ```
 
 ## Installing
@@ -141,7 +142,7 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  datatools: ^0.6.0  
+  datatools: ^0.7.0 
 ```
 
 All dependencies used by `datatools` are also ready for 

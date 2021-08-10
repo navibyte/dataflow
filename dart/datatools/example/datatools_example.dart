@@ -52,7 +52,7 @@ Future<void> _httpFetcher() async {
   } on OriginException catch (e) {
     final msg = e.isNotFound ? 'not found' : 'status code ${e.statusCode}';
     print('Origin exception: $msg');
-  } on Exception catch (e) {
+  } catch (e) {
     print('Other exception: $e');
   }
 
@@ -75,19 +75,19 @@ Future<void> _httpFetcher() async {
     print('* JSON raw text for post 2 : $text');
   } on OriginException catch (e) {
     print('Origin exception: status code ${e.statusCode}');
-  } on Exception catch (e) {
+  } catch (e) {
     print('Other exception: $e');
   }
 
   // fetch content as stream and then consume byte blocks coming from stream
   try {
     final content = await fetcher.fetchStream(Uri(path: 'posts/3'));
-    await for (final bytes in await content.stream) {
+    await for (final bytes in content.byteStream()) {
       print('* Got ${bytes.length} bytes from post 3');
     }
   } on OriginException catch (e) {
     print('Origin exception: status code ${e.statusCode}');
-  } on Exception catch (e) {
+  } catch (e) {
     print('Other exception: $e');
   }
 }
@@ -114,7 +114,7 @@ Future<void> _httpFetcherWithClient() async {
     } on OriginException catch (e) {
       final msg = e.isNotFound ? 'not found' : 'status code ${e.statusCode}';
       print('Origin exception: $msg');
-    } on Exception catch (e) {
+    } catch (e) {
       print('Other exception: $e');
     }
   } finally {
@@ -137,7 +137,7 @@ Future<void> _fileFetcher() async {
   } on OriginException catch (e) {
     final msg = e.isNotFound ? 'not found' : 'other';
     print('Origin exception: $msg');
-  } on Exception catch (e) {
+  } catch (e) {
     print('Other exception: $e');
   }
 }

@@ -35,10 +35,23 @@ packages:
 
 Code @ GitHub | SDK | Description 
 ------------- | --- | -----------
-:spiral_notepad: [attributes](dart/attributes) | Dart | Generic data structures for values, properties, identifiers and entities with type and null safe accessors.
+:spiral_notepad: [attributes](dart/attributes) | Dart | Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
 :cloud: [datatools](dart/datatools) | Dart | Utilities to fetch data from HTTP and file resources and other data sources.
 
 ## :newspaper_roll: News
+
+2021-08-10
+* BETA version 0.7.0
+* New features and large refactoring on [attributes](https://pub.dev/packages/attributes):
+  * structured data now handled using new DataObject and DataArray classes
+    * with decoding and encoding with JSON Objects and JSON Arrays
+  * value conversion functions enhanced
+  * [new sample domain model classes with JSON serialization](https://github.com/navibyte/dataflow/issues/10)
+  * [mini-libraries restructured](https://github.com/navibyte/dataflow/issues/9)
+  * other refactoring and smaller new features  
+* Minor breaking changes on [datatools](https://pub.dev/packages/datatools):
+  * support for "reviver" when decoding JSON, byte stream signature changed
+* [Official Dart lint rules applied with recommend set](https://github.com/navibyte/dataflow/issues/2)
 
 2021-04-25
 * BETA version 0.6.0
@@ -57,6 +70,14 @@ Code @ GitHub | SDK | Description
 
 Please check history for previous releases from the
 [Geospatial tools for Dart](https://github.com/navibyte/geospatial) repository.
+
+## :building_construction: Roadmap
+
+Future enhancement **candidates** for [attributes](dart/attributes), not in any order:
+* [Add validation support on consuming data objects #11](https://github.com/navibyte/dataflow/issues/11)
+* [Simplify mapping iterables in toData and fromData implementations of common domain model classes #12](https://github.com/navibyte/dataflow/issues/12)
+
+See [other issues](https://github.com/navibyte/dataflow/issues) too.
 
 ## :house_with_garden: Authors
 
@@ -80,7 +101,8 @@ SDKs:
 * [Flutter](https://flutter.dev/) 
 
 Latest on SDKs
-* [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
+* [Dart 2.13](https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067) with new type aliases and more
+* [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) with sound null safety
 * [Flutter 2](https://developers.googleblog.com/2021/03/announcing-flutter-2.html)
 * [What’s New in Flutter 2](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)
 

@@ -17,30 +17,33 @@ mixin ValueAccessorMixin<K> implements ValueAccessor<K> {
   bool existsNonNull(K key) => exists(key) && this[key] != null;
 
   @override
-  String getString(K key) => valueToString(this[key]);
+  String getString(K key) => toStringValue(this[key]);
 
   @override
   int getInt(K key, {int? min, int? max}) =>
-      valueToInt(this[key], min: min, max: max);
+      toIntValue(this[key], min: min, max: max);
 
   @override
   BigInt getBigInt(K key, {BigInt? min, BigInt? max}) =>
-      valueToBigInt(this[key], min: min, max: max);
+      toBigIntValue(this[key], min: min, max: max);
 
   @override
   double getDouble(K key, {double? min, double? max}) =>
-      valueToDouble(this[key], min: min, max: max);
+      toDoubleValue(this[key], min: min, max: max);
 
   @override
   num getNum(K key, {num? min, num? max}) =>
-      valueToNum(this[key], min: min, max: max);
+      toNumValue(this[key], min: min, max: max);
 
   @override
-  bool getBool(K key) => valueToBool(this[key]);
+  bool getBool(K key) => toBoolValue(this[key]);
 
   @override
   DateTime getTimeUTC(K key, {DateTime Function(Object?)? parse}) =>
-      parse != null ? parse(this[key]).toUtc() : valueToTimeUTC(this[key]);
+      parse != null ? parse(this[key]).toUtc() : toTimeUTCValue(this[key]);
+
+  @override
+  Identifier getId(K key) => toIdValue(this[key]);
 
   @override
   String? tryString(K key) {
@@ -100,6 +103,15 @@ mixin ValueAccessorMixin<K> implements ValueAccessor<K> {
   DateTime? tryTimeUTC(K key, {DateTime Function(Object?)? parse}) {
     try {
       return getTimeUTC(key, parse: parse);
+    } on Exception {
+      return null;
+    }
+  }
+
+  @override
+  Identifier? tryId(K key) {
+    try {
+      return getId(key);
     } on Exception {
       return null;
     }

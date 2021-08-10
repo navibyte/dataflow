@@ -1,3 +1,24 @@
+## 0.7.2
+
+- Small fix on export definitions of `package:attributes/data.dart`
+
+## 0.7.1
+
+- Small documentation fixes, no library code changes.
+
+## 0.7.0
+
+- BETA version 0.7.0 with breaking changes
+- [Add new sample with domain model classes and JSON serialization #10](https://github.com/navibyte/dataflow/issues/10)
+- [Structure mini-libraries provided by the attributes package #9](https://github.com/navibyte/dataflow/issues/9)
+- [Properties, PropertyMap and PropertList refactored with new features and structure into DataElement, DataObject and DataArray classes #8](https://github.com/navibyte/dataflow/issues/8)
+- [Add empty check getters to Counted interface #7](https://github.com/navibyte/dataflow/issues/7)
+- [Separate mini library for specialized FormatException exceptions #6](https://github.com/navibyte/dataflow/issues/6)
+- [Add new value conversion functions and apply consistent naming #5](https://github.com/navibyte/dataflow/issues/5)
+- [Restructure primitive and value accessor interfaces #4](https://github.com/navibyte/dataflow/issues/4)
+- [Restructure primitive value interfaces #3](https://github.com/navibyte/dataflow/issues/3)
+- [Official Dart lint rules applied with recommend set #2](https://github.com/navibyte/dataflow/issues/2)
+
 ## 0.6.0
 
 - BETA version 0.6.0 with some breaking changes

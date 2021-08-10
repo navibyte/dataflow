@@ -35,6 +35,11 @@ void main() {
           })),
           Uri.parse(
               'https://example.org/sub/some/path?foo=bar&one=1&multi=a&multi=b'));
+      final baseUri2 = Uri.parse('https://example.org/sub?param1=1');
+      expect(
+          baseUri2.resolveUri(
+              Uri(queryParameters: <String, dynamic>{'param2': '2'})),
+          Uri.parse('https://example.org/sub?param2=2'));
     });
   });
 }

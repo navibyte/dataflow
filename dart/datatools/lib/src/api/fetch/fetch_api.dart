@@ -54,11 +54,15 @@ abstract class FetchApi<C extends Content> {
 
   /// Fetch content body as JSON data from a resource identified by [reference].
   ///
+  /// An optional [reviver] function is applied when decoding json string data.
+  /// See `JsonCodec` of the `dart:convert` package for more information.
+  ///
   /// Depending on the API the [reference] can be a relative path, an absolute
   /// URL, a key, or other identifier relevant on a context of an API.
   ///
   /// Throws an `ApiException` if fetching fails. Implementations like HTTP
   /// fetcher may also throw other status codes than codes for success as
   /// exceptions.
-  Future<dynamic> fetchJson(Uri reference);
+  Future<dynamic> fetchJson(Uri reference,
+      {Object? Function(Object? key, Object? value)? reviver});
 }

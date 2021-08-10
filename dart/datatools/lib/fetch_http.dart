@@ -55,9 +55,14 @@ Future<Uint8List> fetchBytes(Uri url, {Map<String, String>? headers}) =>
 
 /// Fetch content body as JSON data from a HTTP(S) resource identified by [url].
 ///
+/// An optional [reviver] function is applied when decoding json string data.
+/// See `JsonCodec` of the `dart:convert` package for more information.
+///
 /// Throws an `ApiException` if fetching fails. Also response status codes other
 /// than codes for success are thrown as exceptions.
-Future<dynamic> fetchJson(Uri url, {Map<String, String>? headers}) =>
+Future<dynamic> fetchJson(Uri url,
+        {Map<String, String>? headers,
+        Object? Function(Object? key, Object? value)? reviver}) =>
     headers != null
         ? HttpFetcher.simple().headers(headers).fetchJson(url)
         : HttpFetcher.simple().fetchJson(url);

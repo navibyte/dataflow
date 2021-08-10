@@ -81,21 +81,7 @@ class HttpContent extends Content {
   }
 
   @override
-  Future<dynamic> decodeJson() async {
-    try {
-      final res = response;
-      if (res is http.StreamedResponse) {
-        return json.decode(await res.stream.bytesToString());
-      } else {
-        return json.decode((res as http.Response).body);
-      }
-    } on Exception catch (e) {
-      throw ClientException.decodingJsonFailed(e);
-    }
-  }
-
-  @override
-  Future<Stream<List<int>>> get stream async {
+  Stream<List<int>> byteStream() {
     try {
       final res = response;
       if (res is http.StreamedResponse) {
@@ -107,4 +93,22 @@ class HttpContent extends Content {
       throw ClientException.openingStreamFailed(e);
     }
   }
+
+  @override
+  Future<dynamic> decodeJson(
+      {Object? Function(Object? key, Object? value)? reviver}) async {
+    try {
+      final res = response;
+      if (res is http.StreamedResponse) {
+        return json.decode(await res.stream.bytesToString(), reviver: reviver);
+      } else {
+        return json.decode((res as http.Response).body, reviver: reviver);
+      }
+    } on Exception catch (e) {
+      throw ClientException.decodingJsonFailed(e);
+    }
+  }
+
+  @override
+  Future<Stream<List<int>>> get stream async => byteStream();
 }

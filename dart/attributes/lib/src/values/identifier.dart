@@ -8,7 +8,7 @@ import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';
 
-import '../values.dart';
+import 'string_or_integer.dart';
 
 /// An identifier of something, represented as `String`, `int` or `BigInt`.
 abstract class Identifier implements StringOrInteger {
@@ -37,7 +37,7 @@ abstract class Identifier implements StringOrInteger {
 
   /// Prepares a nullable [Identifier] instance of the given [id]
   ///
-  /// The [id] argument  is allowed to be null or an instance of [Identifier],
+  /// The [id] argument is allowed to be null or an instance of [Identifier],
   /// `String`, `int` or `BigInt`. In other cases an ArgumentError is thrown.
   static Identifier? idOrNull(Object? id) {
     if (id == null) {

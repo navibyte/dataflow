@@ -8,10 +8,10 @@ import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';
 
-import '../collection.dart';
+import '../data.dart';
+import '../values.dart';
 
 import 'entity.dart';
-import 'identifier.dart';
 
 /// An immutable base implementation of [Entity].
 @immutable
@@ -25,7 +25,7 @@ class EntityBase extends Entity with EquatableMixin {
   final Identifier? id;
 
   @override
-  final PropertyMap properties;
+  final DataObject properties;
 
   // Note: [props] is from [EquatableMixin] and is different from [properties].
   @override

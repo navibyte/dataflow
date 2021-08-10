@@ -22,6 +22,18 @@ class ClientException extends ApiException {
   factory ClientException.uriNotAllowed(Uri uri) =>
       ClientException('$uri is not allowed', uri: uri);
 
+  factory ClientException.typeNotSupported(Uri uri, Type type) =>
+      ClientException('Requested $type for $uri is not supported', uri: uri);
+
+  factory ClientException.dataNotSupported(Uri uri, Type dataType) =>
+      ClientException('Data of $dataType for $uri is not supported', uri: uri);
+
+  factory ClientException.dataForTypeNotSupported(
+          Uri uri, Type type, Type dataType) =>
+      ClientException(
+          'Data of $dataType (requested $type) for $uri is not supported',
+          uri: uri);
+
   factory ClientException.failed(Uri uri, dynamic cause) =>
       ClientException('Calling $uri failed: $cause', cause: cause, uri: uri);
 

@@ -21,6 +21,7 @@ mixin FetchMixin<C extends Content> implements FetchApi<C> {
       (await fetch(reference)).bytes;
 
   @override
-  Future<dynamic> fetchJson(Uri reference) async =>
-      (await fetch(reference)).decodeJson();
+  Future<dynamic> fetchJson(Uri reference,
+          {Object? Function(Object? key, Object? value)? reviver}) async =>
+      (await fetch(reference)).decodeJson(reviver: reviver);
 }

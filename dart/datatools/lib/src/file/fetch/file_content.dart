@@ -62,20 +62,25 @@ class FileContent extends Content {
   }
 
   @override
-  Future<dynamic> decodeJson() async {
-    try {
-      return json.decode(await file.readAsString(encoding: encoding));
-    } on Exception catch (e) {
-      throw ClientException.decodingJsonFailed(e);
-    }
-  }
-
-  @override
-  Future<Stream<List<int>>> get stream async {
+  Stream<List<int>> byteStream() {
     try {
       return file.openRead();
     } on Exception catch (e) {
       throw ClientException.openingStreamFailed(e);
     }
   }
+
+  @override
+  Future<dynamic> decodeJson(
+      {Object? Function(Object? key, Object? value)? reviver}) async {
+    try {
+      return json.decode(await file.readAsString(encoding: encoding),
+          reviver: reviver);
+    } on Exception catch (e) {
+      throw ClientException.decodingJsonFailed(e);
+    }
+  }
+
+  @override
+  Future<Stream<List<int>>> get stream async => byteStream();
 }

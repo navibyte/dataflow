@@ -23,7 +23,7 @@ class Link with EquatableMixin {
       this.length});
 
   /// A link from decoded JSON objects.
-  Link.fromJson(Map<String, dynamic> json)
+  Link.fromJson(Map<String, Object?> json)
       : href = json['href'] as String,
         rel = json['rel'] as String?,
         type = json['type'] as String?,

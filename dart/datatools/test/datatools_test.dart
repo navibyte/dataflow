@@ -95,7 +95,7 @@ Future<void> main() async {
     test('Fetch a stream, then read byte blocks from stream', () async {
       final content = await fetcher.fetchStream(refPosts2);
       var i = 0;
-      await for (final bytes in await content.stream) {
+      await for (final bytes in content.byteStream()) {
         //print(bytes);
         for (final b in bytes) {
           expect(b, post2AsBytes[i++]);

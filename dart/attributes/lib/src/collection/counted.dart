@@ -8,8 +8,14 @@
 abstract class Counted {
   const Counted();
 
-  /// Returns the number of direct childs on the collection.
+  /// Returns the number of elements in this collection.
   ///
   /// If not applicable or not known then 0 should be returned.
   int get length;
+
+  /// Returns true if the collection has no elements.
+  bool get isEmpty;
+
+  /// Returns true if the collection has at least one element.
+  bool get isNotEmpty;
 }

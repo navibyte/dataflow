@@ -4,7 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-/// Generic API abstractions (addresses, content, control data, exceptions).
+/// Generic API abstractions (address, content, control data, exceptions).
 ///
 /// Usage: import `package:datatools/base_api.dart`
 library base_api;

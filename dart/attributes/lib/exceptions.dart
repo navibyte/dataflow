@@ -4,11 +4,9 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-/// Base classes for collection implementations.
+/// Exceptions specializing the standard `FormatException`.
 ///
-/// Currently provides only the `Counted` interface.
-///
-/// Usage: import `package:attributes/collection.dart`
-library collection;
+/// Usage: import `package:attributes/exceptions.dart`
+library exceptions;
 
-export 'src/collection.dart';
+export 'src/exceptions.dart';

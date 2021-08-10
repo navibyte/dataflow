@@ -9,4 +9,8 @@
 /// Usage: import `package:attributes/values.dart`
 library values;
 
+// export also separate "exceptions" as it's handy with values library.
+export 'src/exceptions.dart';
+
+// the actual code for `package:attributes/values.dart`
 export 'src/values.dart';

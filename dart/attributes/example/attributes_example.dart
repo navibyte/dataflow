@@ -46,8 +46,8 @@ void _intro() {
     }
   ''';
 
-  // Decode JSON data as a property map.
-  final props = PropertyMap.decodeJson(sample);
+  // Decode JSON data as a data object.
+  final props = DataObject.decodeJson(sample);
 
   // Access required null-safe properties using type-safe getXXX accessors.
   // These calls throw if a property is missing or does not convert to a type.
@@ -65,22 +65,24 @@ void _intro() {
   final users = props.tryBigInt('knownUsers');
   if (users != null) {
     print('The number of users ($users) is now known and it is huge!');
+  } else {
+    print('Data for known users not yet collected.');
   }
 
-  // Hierarchical data is represented by sub property maps (JSON Objects) or
-  // sub property lists (JSON Arrays). For example property maps can be
-  // accessed by "getMap" (required data) or "tryMap" (optional data) accessors.
-  final toolkit = props.getMap('toolkit');
+  // Hierarchical data is represented by sub data objects (JSON Objects) or
+  // sub data arrays (JSON Arrays). For example data objects can be
+  // accessed by "object" (required data) or "tryObject" (optional) accessors.
+  final toolkit = props.object('toolkit');
 
   // Numeric values can be clamped to a range if value validation is needed.
   // Min and max limits are optional parameters when accessing num, int, double,
   // or BigInt.
   final fps = toolkit.getDouble('fps', min: 60.0, max: 120.0);
 
-  // Access an optional property list as a nullable variable.
-  final platforms = toolkit.tryList('platforms');
+  // Access an optional data array as a nullable variable.
+  final platforms = toolkit.tryArray('platforms');
 
-  // Trying to get an item by index in a property list (here nullable). Returns
+  // Trying to get an item by index in a data array (here nullable). Returns
   // null if not available, but in this example should return a String.
   final android = platforms?.tryString(1);
 
@@ -92,7 +94,7 @@ void _intro() {
   // As already described dynamic data like JSON may also contain nulls or an
   // element for a certain key might not exist at all. Sometimes it's reasonable
   // just to check whether an value exists without trying to access it.
-  final lang = props.getMap('language');
+  final lang = props.object('language');
   if (lang.exists('nullProperty')) {
     // executes when exists and a value is either null or non-null
   }

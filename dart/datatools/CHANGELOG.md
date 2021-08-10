@@ -1,3 +1,13 @@
+## 0.7.0
+
+- BETA version 0.7.0 with minor breaking changes
+- Support for an optional reviver-function when decoding JSON data.
+  - `Object? Function(Object? key, Object? value)? reviver})`
+- `Content` class getter for stream changed as: `Stream<List<int>> byteStream()` 
+  - now deprecated: `Future<Stream<List<int>>> get stream`   
+- Add new factory contructors to `ClientException`  
+- [Official Dart lint rules applied with recommend set #2](https://github.com/navibyte/dataflow/issues/2)
+
 ## 0.6.0
 
 - BETA version 0.6.0 with minor breaking changes
