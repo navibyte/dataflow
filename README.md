@@ -76,6 +76,7 @@ Please check history for previous releases from the
 Future enhancement **candidates** for [attributes](dart/attributes), not in any order:
 * [Add validation support on consuming data objects #11](https://github.com/navibyte/dataflow/issues/11)
 * [Simplify mapping iterables in toData and fromData implementations of common domain model classes #12](https://github.com/navibyte/dataflow/issues/12)
+* [Equality and hashcodes on collections #1](https://github.com/navibyte/dataflow/issues/1)
 
 See [other issues](https://github.com/navibyte/dataflow/issues) too.
 
