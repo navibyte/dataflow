@@ -18,17 +18,13 @@ Key features:
 
 ## Introduction
 
-Let's consider some alternatives for [Dart](https://dart.dev/) and 
+Let's first consider some alternatives for [Dart](https://dart.dev/) and 
 [Flutter](https://flutter.dev/) developers to parse JSON and map data fields to 
 a domain model.
 
-But first we need a sample domain model with member fields and constructors:
+To do this we need a sample domain model:
 
 ```dart
-/// [Address] is a simple data object with [street] and [city] fields.
-///
-/// Sample source data as a JSON Object:
-/// `{ "street": "Main street", "city": "Anytown" }`
 class Address {
   final String street;
   final String city;
@@ -36,18 +32,6 @@ class Address {
   const Address({required this.street, required this.city});
 }
 
-/// [Person] with [name], [age], an optional [length] and aggregated [address].
-///
-/// Sample source data as a JSON Object:
-/// ```json
-///   {
-///     "name": "John Smith",
-///     "age": 52,
-///     "length": 1.75,
-///     "address": { "street": "Main street", "city": "Anytown" },
-///     "updated": "2021-08-09 09:00Z"
-///   }
-/// ```
 class Person {
   final String name;
   final int age;
@@ -64,14 +48,11 @@ class Person {
 }
 ```
 
-Great! We now have domain model classes for our sample. 
+### Serializing JSON traditionally without "attributes"
 
-Now let's see how objects can be populated by decoding JSON, and encoding JSON 
-back from model classes. 
-
-### Serializing JSON traditionally
-
-There are multiple offically supported [solutions](https://flutter.dev/docs/development/data-and-backend/json) to handle JSON like:
+There are multiple offically supported 
+[solutions](https://flutter.dev/docs/development/data-and-backend/json)
+to handle JSON like:
 * *Serializing JSON inline*
   * access `Map<String, dynamic>` data directly using the `[]` operator 
 * *Serializing JSON inside model classes*
@@ -83,55 +64,40 @@ There are multiple offically supported [solutions](https://flutter.dev/docs/deve
 Of these solutions we review a basic tradional way of implementing a 
 `fromJson` factories and a `toJson` methods. 
 
-This approach may require a lot of type
-casts (at least when you have disabled `implicit-casts` and `implicit-dynamic`
-on your analysis-options.yaml as you 
-[maybe should](https://dash-overflow.net/articles/getting_started/)), null 
-checks, value conversions and validations that can be error-prone.
-
 A sample with a simple domain model and JSON serialization support:
 
 ```dart
 class Address {
-  // ... member fields and constructors omitted ...
-
+  // ... showing only decoding part ...
   factory Address.fromJson(Map<String, dynamic> json) => Address(
         street: json['street'] as String,
         city: json['city'] as String,
       );
-
-  Map<String, dynamic> toJson() => {
-        'street': street,
-        'city': city,
-      };
 }
 
 class Person {
-  // ... member fields and constructors omitted ...
-
+  // ... showing only decoding part ...
   factory Person.fromJson(Map<String, dynamic> json) => Person(
       name: json['name'] as String,
       age: json['age'] as int,
       length: json['length'] as double?,
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
       updatedUTC: DateTime.parse(json['updated'] as String).toUtc());
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'age': age,
-        if (length != null) 'length': length,
-        'address': address.toJson(),
-        'updated': updatedUTC.toIso8601String(),
-      };
 }
 ```
+
+As you can see this approach may require a lot of type casts (at least when you
+have disabled `implicit-casts` and `implicit-dynamic` on your 
+analysis-options.yaml as you 
+[maybe should](https://dash-overflow.net/articles/getting_started/)), null 
+checks, value conversions and validations that can be error-prone. Also this 
+solution couples your domain model to JSON encoding (be it a good or bad 
+feature).
 
 Such traditional domain models can be decoded and encoded as a common practise:
 
 ```dart
 import 'dart:convert';
-
-// ....
 
 // Decode JSON and create a domain model object.
 final person = Person.fromJson(
@@ -157,36 +123,21 @@ Sample code shows differences best between this solution and a traditional way:
 import 'package:attributes/data.dart';
 
 class Address {
-  // ... member fields and constructors omitted ...
-
+  // ... showing only decoding part ...
   factory Address.fromData(DataObject data) => Address(
         street: data.getString('street'),
         city: data.getString('city'),
       );
-
-  DataObject toData() => DataObject.of({
-        'street': street,
-        'city': city,
-      });
 }
 
 class Person {
-  // ... member fields and constructors omitted ...
-
+  // ... showing only decoding part ...
   factory Person.fromData(DataObject data) => Person(
       name: data.getString('name'),
       age: data.getInt('age'),
       length: data.tryDouble('length'),
       address: Address.fromData(data.object('address')),
       updatedUTC: data.getTimeUTC('updated'));
-
-  DataObject toData() => DataObject.of({
-        'name': name,
-        'age': age,
-        if (length != null) 'length': length,
-        'address': address.toData(),
-        'updated': updatedUTC,
-      });
 }
 ```
 
@@ -200,19 +151,23 @@ final person = Person.fromData(DataObject.decodeJson(someJsonData));
 print(person.toData().encodeJson());
 ```
 
-We still need almost as much code to be written but reading data is much more
-safe when considering types and nullability. 
+Please see the [full sample code](example/data_object_example.dart) describing
+both decoding and encoding parts, and data arrays along with data object 
+introduced above.
+
+When comparing to the traditional way, we still need almost as much lines to be
+coded but reading data is much more safe when considering types and
+nullability. 
 
 This code is a bit cleaner too as a bonus!
 
-Please see the [full sample code](example/data_object_example.dart) describing
-also usage of `DataArray` decoded from JSON Array data as `DataObject` was used
-for JSON Objects.
-
-Remember also that `DataObject` and `DataArray` are extendable interfaces. 
-A previous sample described their implementation with JSON serialization, but 
-interfaces are not limited only to JSON structured data. However support for 
-other encodings is out of scope of this library.
+The `DataObject` interface does not depend on JSON encoding, even if this
+sample populated an generic data object using the `DataObject.decodeJson()` 
+factory and a JSON data source, and then it was accessed by domain classes in 
+`Address.fromData(DataObject data)` and `Person.fromData(DataObject data)` 
+factories. Anyway it's possible to extend `DataObject` class to support 
+also other encodings than JSON. However, such support is out of scope of this
+library.
 
 ## Usage
 
@@ -460,7 +415,7 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  attributes: ^0.7.2
+  attributes: ^0.7.3
 ```
 
 All dependencies used by `attributes` are also ready for 

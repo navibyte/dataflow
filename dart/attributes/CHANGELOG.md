@@ -1,3 +1,7 @@
+## 0.7.3
+
+- Documentation updates, no library code changes.
+
 ## 0.7.2
 
 - Small fix on export definitions of `package:attributes/data.dart`
