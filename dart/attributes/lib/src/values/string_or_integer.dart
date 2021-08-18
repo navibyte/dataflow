@@ -12,6 +12,7 @@
 /// and some integers with larger magnitude". So for this reason also `BigInt`
 /// might be needed for storing integers out of that range.
 abstract class StringOrInteger {
+  /// Default `const` constructor to allow extending this abstract class.
   const StringOrInteger();
 
   /// True if this value is stored as a `String`.

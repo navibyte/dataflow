@@ -15,6 +15,7 @@ import '../../api/exceptions.dart';
 
 /// File content providing body and stream access for a file resource.
 class FileContent extends Content {
+  /// Create a file content of [reference] and [file].
   FileContent(this.reference, this.file,
       {String? contentType, this.encoding = utf8, this.contentLength})
       : mediaType = Head.mediaTypeOf(contentType);

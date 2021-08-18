@@ -16,6 +16,7 @@ import 'data_object.dart';
 ///
 /// Normally [K] is either String or int, but could be other types also.
 abstract class DataElement<K> extends ValueAccessor<K> implements Counted {
+  /// Default `const` constructor to allow extending this abstract class.
   const DataElement();
 
   /// Encodes this element into a JSON string.

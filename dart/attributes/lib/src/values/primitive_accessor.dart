@@ -11,6 +11,7 @@
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool` and `Null`.
 abstract class PrimitiveAccessor<K> {
+  /// Default `const` constructor to allow extending this abstract class.
   const PrimitiveAccessor();
 
   /// Returns true if the [key] references an existing value, null or non-null.

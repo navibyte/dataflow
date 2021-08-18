@@ -6,6 +6,7 @@
 
 /// An anchor for a resource.
 abstract class Anchor {
+  /// Default `const` constructor to allow extending this abstract class.
   const Anchor();
 
   /// The URI [reference] to a resource this anchor is referring.

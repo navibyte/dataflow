@@ -10,9 +10,8 @@ import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';
 
-import '../utils/json.dart';
-
 import '../exceptions.dart';
+import '../utils/json.dart';
 import '../values.dart';
 
 import 'data_element.dart';
@@ -32,6 +31,7 @@ import 'data_object.dart';
 /// final json = DataArray.decodeJson('["foo", "bar", 2, null]');
 /// ```
 abstract class DataArray extends DataElement<int> {
+  /// Default `const` constructor to allow extending this abstract class.
   const DataArray();
 
   /// Creates a data array with items copied from [source].
@@ -118,9 +118,11 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
   Obj newObjectView(Map<String, Object?> source) =>
       DataObject.view(source) as Obj;
 
+  /// Wrapped [list] containing values view by this class as [DataArray].
   @protected
   final Iterable<Object?> list;
 
+  /// Whether [list] is (potentially) exposed to side effects.
   @protected
   final bool isExposed;
 
@@ -144,7 +146,7 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
 
   Object? _checkAt(int key) {
     if (key < 0 && key >= length) {
-      throw UndefinedValueException();
+      throw const UndefinedValueException();
     }
     return list.elementAt(key);
   }
@@ -157,6 +159,7 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
   Iterable<T?> toNullableValues<T extends Object>() =>
       toNullableValuesOf<T>(list, isExposed: isExposed);
 
+  /// Returns data as an encodable object compatible with `json.encode()`.
   Object? toEncodable() => list;
 
   @override

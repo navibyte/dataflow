@@ -6,6 +6,7 @@
 
 /// An interface to set control data to a client (ie. HTTP client or fetcher).
 abstract class Controlled<C> {
+  /// Default `const` constructor to allow extending this abstract class.
   const Controlled();
 
   /// Returns a new controlled object of [C] with given [headers] applied to it.

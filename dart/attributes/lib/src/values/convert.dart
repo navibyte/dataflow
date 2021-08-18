@@ -12,7 +12,7 @@ import 'identifier.dart';
 
 /// Converts [data] to `String` or throws FormatException if cannot convert.
 String toStringValue(Object? data) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   if (data is String) return data;
   return data.toString();
 }
@@ -21,7 +21,7 @@ String toStringValue(Object? data) {
 ///
 /// If provided [min] and [max] are used to clamp the returned value.
 int toIntValue(Object? data, {int? min, int? max}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   int result;
   if (data is num) {
     result = data.round();
@@ -47,7 +47,7 @@ int toIntValue(Object? data, {int? min, int? max}) {
 ///
 /// If provided [min] and [max] are used to clamp the returned value.
 BigInt toBigIntValue(Object? data, {BigInt? min, BigInt? max}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   BigInt result;
   if (data is BigInt) {
     result = data;
@@ -73,7 +73,7 @@ BigInt toBigIntValue(Object? data, {BigInt? min, BigInt? max}) {
 ///
 /// If provided [min] and [max] are used to clamp the returned value.
 double toDoubleValue(Object? data, {double? min, double? max}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   double result;
   if (data is num) {
     result = data.toDouble();
@@ -101,7 +101,7 @@ double toDoubleValue(Object? data, {double? min, double? max}) {
 ///
 /// If provided [min] and [max] are used to clamp the returned value.
 num toNumValue(Object? data, {num? min, num? max}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   num result;
   if (data is num) {
     result = data;
@@ -126,7 +126,7 @@ num toNumValue(Object? data, {num? min, num? max}) {
 
 /// Converts [data] to `bool` or throws FormatException if cannot convert.
 bool toBoolValue(Object? data) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   if (data is bool) {
     return data;
   } else if (data is num) {
@@ -160,7 +160,7 @@ bool toBoolValue(Object? data) {
 /// Otherwise a FormatException is thrown.
 DateTime toTimeUTCValue(Object? data,
     {DateFormat? sourceFormat, bool isUTCSource = false}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   if (data is DateTime) {
     return data.toUtc();
   } else if (data is String) {
@@ -189,7 +189,7 @@ DateTime toTimeUTCValue(Object? data,
 ///
 /// Otherwise a FormatException is thrown.
 DateTime toTimeMillisUTCValue(Object? data, {bool isUTCSource = false}) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   if (data is DateTime) {
     return data.toUtc();
   } else if (data is int) {
@@ -205,7 +205,7 @@ DateTime toTimeMillisUTCValue(Object? data, {bool isUTCSource = false}) {
 
 /// Converts [data] to [Identifier] or throws FormatException if cannot convert.
 Identifier toIdValue(Object? data) {
-  if (data == null) throw NullValueException();
+  if (data == null) throw const NullValueException();
   if (data is Identifier) {
     return data;
   } else {
@@ -219,7 +219,7 @@ Identifier toIdValue(Object? data) {
 /// `bool`, `DateTime`, `Identifier`, `Object`.
 T toValueOf<T extends Object>(Object? data) {
   if (data == null) {
-    throw NullValueException();
+    throw const NullValueException();
   } else if (T == String) {
     return toStringValue(data) as T;
   } else if (T == num) {

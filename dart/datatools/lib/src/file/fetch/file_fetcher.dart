@@ -68,7 +68,7 @@ class FileFetcher extends Fetcher<FileContent> with FetchMixin<FileContent> {
     if (expectFileExists) {
       if (!file.existsSync()) {
         throw OriginException.of('File not existing',
-            uri: reference, failure: OriginFailure.notFound);
+            reference: reference, failure: OriginFailure.notFound);
       }
     }
     return file;

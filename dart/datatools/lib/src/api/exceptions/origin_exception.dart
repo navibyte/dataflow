@@ -11,22 +11,41 @@ import 'api_exception.dart';
 /// Note: this is not protocol specific failure type, so this enumeration does
 /// not list all those familiar status codes of HTTP protocol.
 enum OriginFailure {
+  /// An origin failure is `undefined` or other than those specified.
   undefined,
+
+  /// An origin failure is `notModified` (like 304 for HTTP).
   notModified,
+
+  /// An origin failure is `badRequest` (like 400 for HTTP).
   badRequest,
+
+  /// An origin failure is `unauthrorized` (like 401 for HTTP).
   unauthorized,
+
+  /// An origin failure is `forbidden` (like 403 for HTTP).
   forbidden,
+
+  /// An origin failure is `notFound` (like 404 for HTTP).
   notFound,
+
+  /// An origin failure is `notAcceptable` (like 406 for HTTP).
   notAcceptable,
 }
 
 /// An exception containing a failure message as a response from an API origin.
 abstract class OriginException extends ApiException {
-  const OriginException(String message, {Uri? uri})
-      : super(message, reference: uri);
+  /// A default constructor of [message] and an optional [reference].
+  const OriginException(String message, {Uri? reference})
+      : super(message, reference: reference);
 
+  /// Create an exception of [message], [failure] and [statusCode].
+  /// 
+  /// Optionally also [reference] and [reasonPhrase] can be given.
+  /// 
+  /// The default for [failure] is `undefined` and for [statusCode] is `0`.   
   factory OriginException.of(String message,
-      {Uri? uri,
+      {Uri? reference,
       OriginFailure failure,
       int statusCode,
       String? reasonPhrase}) = _OriginExceptionBase;
@@ -40,26 +59,32 @@ abstract class OriginException extends ApiException {
   /// Protocol (like HTTP) specific reason phrase. By default nul if not set.
   String? get reasonPhrase => null;
 
+  /// True if [failure] is `notModified`.
   bool get isNotModified => failure == OriginFailure.notModified;
 
+  /// True if [failure] is `badRequest`.
   bool get isBadRequest => failure == OriginFailure.badRequest;
 
+  /// True if [failure] is `unauthorized`.
   bool get isUnauthorized => failure == OriginFailure.unauthorized;
 
+  /// True if [failure] is `forbidden`.
   bool get isForbidden => failure == OriginFailure.forbidden;
 
+  /// True if [failure] is `notFound`.
   bool get isNotFound => failure == OriginFailure.notFound;
 
+  /// True if [failure] is `notAcceptable`.
   bool get isNotAcceptable => failure == OriginFailure.notAcceptable;
 }
 
 class _OriginExceptionBase extends OriginException {
   const _OriginExceptionBase(String message,
-      {Uri? uri,
+      {Uri? reference,
       this.failure = OriginFailure.undefined,
       this.statusCode = 0,
       this.reasonPhrase})
-      : super(message, uri: uri);
+      : super(message, reference: reference);
 
   @override
   final OriginFailure failure;

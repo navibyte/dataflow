@@ -10,6 +10,7 @@ import 'package:http_parser/http_parser.dart' show MediaType;
 
 /// An interface providing meta data for some content.
 abstract class Head {
+  /// Default `const` constructor to allow extending this abstract class.
   const Head();
 
   /// The expected media type.

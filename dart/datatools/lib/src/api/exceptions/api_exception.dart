@@ -10,6 +10,7 @@
 /// * `ClientException` - accessing an API and caused by client-side code
 /// * `OriginException` - caused by validation of a response from an API origin
 class ApiException implements Exception {
+  /// A default constructor of [message] and an optional [reference].
   const ApiException(this.message, {this.reference});
 
   /// The descriptive [message].

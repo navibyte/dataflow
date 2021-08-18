@@ -12,6 +12,7 @@ import 'primitive.dart';
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool`, `DateTime`, `Identifier` and `Null`.
 abstract class Value extends Primitive {
+  /// Default `const` constructor to allow extending this abstract class.
   const Value();
 
   /// True if this value is stored as a `DateTime`.

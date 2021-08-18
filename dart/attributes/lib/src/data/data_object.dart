@@ -10,13 +10,13 @@ import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';
 
-import '../utils/json.dart';
 
 import '../exceptions.dart';
+import '../utils/json.dart';
 import '../values.dart';
 
-import 'data_element.dart';
 import 'data_array.dart';
+import 'data_element.dart';
 
 /// A data object with property values accessed by `String` keys.
 ///
@@ -32,6 +32,7 @@ import 'data_array.dart';
 /// final json = DataObject.decodeJson('{"foo": 1, "bar": "two"}');
 /// ```
 abstract class DataObject extends DataElement<String> {
+  /// Default `const` constructor to allow extending this abstract class.
   const DataObject();
 
   /// Creates a data object with items copied from [source].
@@ -123,9 +124,11 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
   @protected
   Arr newArrayView(Iterable<Object?> source) => DataArray.view(source) as Arr;
 
+  /// Wrapped [map] containing map entries view by this class as [DataObject].
   @protected
   final Map<String, Object?> map;
 
+  /// Whether [map] is (potentially) exposed to side effects.
   @protected
   final bool isExposed;
 
@@ -151,7 +154,7 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
     final value = map[key];
     if (value == null) {
       if (!exists(key)) {
-        throw UndefinedValueException();
+        throw const UndefinedValueException();
       }
     }
     return value;
@@ -168,6 +171,7 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
   Map<String, T?> toNullableValueMap<T extends Object>() =>
       toNullableValueMapOf<String, T>(map, isExposed: isExposed);
 
+  /// Returns data as an encodable object compatible with `json.encode()`.
   Object? toEncodable() => map;
 
   @override

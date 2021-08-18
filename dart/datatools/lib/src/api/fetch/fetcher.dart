@@ -12,5 +12,6 @@ import 'fetch_api.dart';
 /// A fetcher with [FetchApi] for fetching and [Controlled] for control data.
 abstract class Fetcher<C extends Content> extends FetchApi<C>
     implements Controlled<Fetcher<C>> {
+  /// Default `const` constructor to allow extending this abstract class.    
   const Fetcher();
 }

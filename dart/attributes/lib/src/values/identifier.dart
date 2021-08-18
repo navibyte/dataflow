@@ -4,6 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+// ignore_for_file: avoid_returning_null
+
 import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';
@@ -12,6 +14,7 @@ import 'string_or_integer.dart';
 
 /// An identifier of something, represented as `String`, `int` or `BigInt`.
 abstract class Identifier implements StringOrInteger {
+  /// Default `const` constructor to allow extending this abstract class.
   const Identifier();
 
   /// An identifier from [id] that MUST be either `String`, `int` or `BigInt`.

@@ -25,7 +25,7 @@
 /// Usage: import `package:attributes/data_ext.dart`
 library data_ext;
 
+export 'src/data.dart';
+
 // export also `Identifier` - essential for using data objects and arrays.
 export 'src/values.dart' show Identifier;
-
-export 'src/data.dart';

@@ -1,3 +1,7 @@
+## 0.8.0
+
+- [Apply very_good_analysis 2.3.0+ lint rules #13](https://github.com/navibyte/dataflow/issues/13)
+
 ## 0.7.0
 
 - BETA version 0.7.0 with minor breaking changes

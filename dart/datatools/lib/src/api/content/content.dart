@@ -11,6 +11,7 @@ import 'head.dart';
 
 /// Content represents a data entity.
 abstract class Content extends Head implements Anchor, Body {
+  /// Default `const` constructor to allow extending this abstract class.
   const Content();
 
   /// Returns a future for a single-subscription stream with content data.

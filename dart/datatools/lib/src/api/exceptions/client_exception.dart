@@ -10,42 +10,61 @@ import 'api_exception.dart';
 
 /// An exception occurred when accessing an API and caused by client-side code.
 class ClientException extends ApiException {
-  const ClientException(String message, {Uri? uri, this.cause})
-      : super(message, reference: uri);
+  /// Create an exception of [message], and optional [reference] and [cause].
+  const ClientException(String message, {Uri? reference, this.cause})
+      : super(message, reference: reference);
 
   /// An optional wrapped [cause] exception.
   final dynamic cause;
 
-  factory ClientException.notRelative(Uri uri) =>
-      ClientException('$uri is not relative reference', uri: uri);
+  /// Create an exception describing that [reference] is not a relative one.
+  factory ClientException.notRelative(Uri reference) =>
+      ClientException('$reference is not relative reference',
+          reference: reference);
 
-  factory ClientException.uriNotAllowed(Uri uri) =>
-      ClientException('$uri is not allowed', uri: uri);
+  /// Create an exception describing that [reference] is not allowd.
+  factory ClientException.uriNotAllowed(Uri reference) =>
+      ClientException('$reference is not allowed', reference: reference);
 
-  factory ClientException.typeNotSupported(Uri uri, Type type) =>
-      ClientException('Requested $type for $uri is not supported', uri: uri);
+  /// Create an exception describing [type] is not supported for [reference].
+  factory ClientException.typeNotSupported(Uri reference, Type type) =>
+      ClientException('Requested $type for $reference is not supported',
+          reference: reference);
 
-  factory ClientException.dataNotSupported(Uri uri, Type dataType) =>
-      ClientException('Data of $dataType for $uri is not supported', uri: uri);
+  /// Create an exception describing data of [dataType] is not supported.
+  ///
+  /// An exception related to [reference].
+  factory ClientException.dataNotSupported(Uri reference, Type dataType) =>
+      ClientException('Data of $dataType for $reference is not supported',
+          reference: reference);
 
+  /// Create an exception describing data of [dataType] is not supported.
+  ///
+  /// An exception related to [reference] and [type] for expected for a type.
   factory ClientException.dataForTypeNotSupported(
-          Uri uri, Type type, Type dataType) =>
+          Uri reference, Type type, Type dataType) =>
       ClientException(
-          'Data of $dataType (requested $type) for $uri is not supported',
-          uri: uri);
+          'Data of $dataType (requested $type) for $reference is not supported',
+          reference: reference);
 
-  factory ClientException.failed(Uri uri, dynamic cause) =>
-      ClientException('Calling $uri failed: $cause', cause: cause, uri: uri);
+  /// Create an exception telling that calling [reference] failed with [cause].
+  factory ClientException.failed(Uri reference, dynamic cause) =>
+      ClientException('Calling $reference failed: $cause',
+          cause: cause, reference: reference);
 
+  /// Create an exception telling that a opening stream failed with [cause].
   factory ClientException.openingStreamFailed(dynamic cause) =>
       ClientException('Opening stream failed: $cause', cause: cause);
 
+  /// Create an exception telling that reading text failed with [cause].
   factory ClientException.readingTextFailed(dynamic cause) =>
       ClientException('Reading text failed: $cause', cause: cause);
 
+  /// Create an exception telling that reading bytes failed with [cause].
   factory ClientException.readingBytesFailed(dynamic cause) =>
       ClientException('Reading bytes failed: $cause', cause: cause);
 
+  /// Create an exception telling that decoding JSON data failed with [cause].
   factory ClientException.decodingJsonFailed(dynamic cause) =>
       ClientException('Decoding json failed: $cause', cause: cause);
 }

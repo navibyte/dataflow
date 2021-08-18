@@ -147,7 +147,7 @@ void _metadataStructures() {
   print('Create some basic metadata structures.');
 
   // Link
-  print(Link(
+  print(const Link(
     href: 'http://example.com',
     rel: 'alternate',
     type: 'application/json',

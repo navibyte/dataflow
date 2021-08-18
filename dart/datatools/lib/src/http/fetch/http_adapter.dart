@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 /// when calling HTTP, like error management, fault-tolerance, re-try
 /// mechanism, handling forward status codes, caching etc.
 abstract class HttpAdapter {
+  /// Default `const` constructor to allow extending this abstract class.
   const HttpAdapter();
 
   /// A simple HTTP adapter that creates a new `http.Client` for each request.

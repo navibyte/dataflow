@@ -9,9 +9,13 @@
 /// Usage: import `package:attributes/entity.dart`
 library entity;
 
-// export also `Identifier` and `DataObject` - essential classes for entities.
+// export also `DataObject` - essential class for entities.
 export 'src/data.dart' show DataObject;
-export 'src/values.dart' show Identifier;
 
 // the actual code for `package:attributes/entity.dart`
 export 'src/entity.dart';
+
+// export also `Identifier` - essential class for entities.
+export 'src/values.dart' show Identifier;
+
+

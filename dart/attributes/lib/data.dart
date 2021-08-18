@@ -16,7 +16,8 @@
 /// Usage: import `package:attributes/data.dart`
 library data;
 
+export 'src/data.dart' hide DataObjectView, DataArrayView;
+
 // export also `Identifier` - essential for using data objects and arrays.
 export 'src/values.dart' show Identifier;
 
-export 'src/data.dart' hide DataObjectView, DataArrayView;

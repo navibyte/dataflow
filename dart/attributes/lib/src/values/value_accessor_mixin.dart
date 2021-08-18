@@ -4,6 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+// ignore_for_file: avoid_returning_null
+
 import '../values.dart';
 
 import 'value_accessor.dart';

@@ -11,6 +11,7 @@ import 'string_or_integer.dart';
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool` and `Null`.
 abstract class Primitive extends StringOrInteger {
+  /// Default `const` constructor to allow extending this abstract class.
   const Primitive();
 
   /// True if this value is stored as numeric (`int`, `BigInt`, `double`) value.

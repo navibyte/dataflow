@@ -15,6 +15,7 @@ import 'link.dart';
 /// See also IANA descriptions about common values for a link
 /// [rel](https://www.iana.org/assignments/link-relations/link-relations.xhtml).
 abstract class Links {
+  /// Default `const` constructor to allow extending this abstract class.
   const Links();
 
   /// An empty metadata container for links.
@@ -24,8 +25,9 @@ abstract class Links {
   factory Links.view(Iterable<Link> source) = _Links;
 
   /// Metadata container for links from JSON objects.
-  factory Links.fromJson(Iterable<Object?> json) =>
-      Links.view(json.map((e) => Link.fromJson(e as Map<String, Object?>)));
+  factory Links.fromJson(Iterable<Object?> json) => Links.view(
+      // ignore: cast_nullable_to_non_nullable
+      json.map((e) => Link.fromJson(e as Map<String, Object?>)));
 
   /// All links iterated.
   Iterable<Link> get all;
@@ -154,7 +156,7 @@ abstract class Links {
 class _Links extends Links with EquatableMixin {
   const _Links(this.all);
 
-  _Links.empty() : all = Iterable.empty();
+  _Links.empty() : all = const Iterable.empty();
 
   @override
   final Iterable<Link> all;

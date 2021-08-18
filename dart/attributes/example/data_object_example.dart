@@ -4,6 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+// ignore_for_file: avoid_print
+
 /*
 To test run this from command line: 
 
@@ -21,15 +23,15 @@ void main() {
 /// Sample source data as a JSON Object:
 /// `{ "street": "Main street", "city": "Anytown" }`
 class Address {
-  final String street;
-  final String city;
-
   const Address({required this.street, required this.city});
 
   factory Address.fromData(DataObject data) => Address(
         street: data.getString('street'),
         city: data.getString('city'),
       );
+
+  final String street;
+  final String city;
 
   DataObject toData() => DataObject.of({
         'street': street,
@@ -50,12 +52,6 @@ class Address {
 ///   }
 /// ```
 class Person {
-  final String name;
-  final int age;
-  final double? length;
-  final Address address;
-  final DateTime updatedUTC;
-
   const Person(
       {required this.name,
       required this.age,
@@ -69,6 +65,12 @@ class Person {
       length: data.tryDouble('length'),
       address: Address.fromData(data.object('address')),
       updatedUTC: data.getTimeUTC('updated'));
+
+  final String name;
+  final int age;
+  final double? length;
+  final Address address;
+  final DateTime updatedUTC;
 
   DataObject toData() => DataObject.of({
         'name': name,
@@ -94,8 +96,6 @@ class Person {
 ///   ]
 /// ```
 class PersonCollection {
-  final Iterable<Person> persons;
-
   const PersonCollection({required this.persons});
 
   factory PersonCollection.fromData(DataArray data) => PersonCollection(
@@ -103,6 +103,8 @@ class PersonCollection {
             .map((element) => Person.fromData(element))
             .toList(growable: false),
       );
+
+  final Iterable<Person> persons;
 
   DataArray toData() => DataArray.of(
         persons.map((person) => person.toData()).toList(growable: false),

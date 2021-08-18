@@ -10,6 +10,7 @@ import '../content.dart';
 
 /// An interface to fetch data from a resource like Web API, a cache or a file.
 abstract class FetchApi<C extends Content> {
+  /// Default `const` constructor to allow extending this abstract class.
   const FetchApi();
 
   /// Fetch (read fully) content body from a resource identified by [reference].

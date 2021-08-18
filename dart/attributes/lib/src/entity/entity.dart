@@ -11,6 +11,7 @@ import 'entity_base.dart';
 
 /// An entity with an optional [id] and required [properties] as a data object.
 abstract class Entity {
+  /// Default `const` constructor to allow extending this abstract class.
   const Entity();
 
   /// A new entity of an optional [id] and required [properties].
