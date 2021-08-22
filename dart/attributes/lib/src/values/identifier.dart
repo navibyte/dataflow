@@ -4,8 +4,6 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-// ignore_for_file: avoid_returning_null
-
 import 'package:meta/meta.dart';
 
 import 'package:equatable/equatable.dart';

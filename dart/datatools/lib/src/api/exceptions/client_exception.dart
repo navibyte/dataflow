@@ -4,8 +4,6 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-// ignore_for_file: sort_constructors_first
-
 import 'api_exception.dart';
 
 /// An exception occurred when accessing an API and caused by client-side code.
