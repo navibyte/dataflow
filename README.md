@@ -11,32 +11,17 @@ Please see also geospatial specific data structures, tools and utilities at the
 separate
 [Geospatial tools for Dart](https://github.com/navibyte/geospatial) repository.
 
-Packages and documentation are published at [pub.dev](https://pub.dev/). 
+## :package: Packages
 
-Latest package releases:
+[Dart](https://dart.dev/) code packages published at 
+[pub.dev](https://pub.dev/publishers/navibyte.com/packages):
 
-Package @ pub.dev | Version | Documentation | Example code 
------------------ | --------| ------------- | -----------
-:spiral_notepad: [attributes](https://pub.dev/packages/attributes) | [![pub package](https://img.shields.io/pub/v/attributes.svg)](https://pub.dev/packages/attributes) | [API reference](https://pub.dev/documentation/attributes/latest/) | [Example](https://pub.dev/packages/attributes/example)
-:cloud: [datatools](https://pub.dev/packages/datatools) | [![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) | [API reference](https://pub.dev/documentation/datatools/latest/) | [Example](https://pub.dev/packages/datatools/example)
+Code           | Package | Description 
+-------------- | --------| -----------
+:spiral_notepad: [attributes](dart/attributes) | [![pub package](https://img.shields.io/pub/v/attributes.svg)](https://pub.dev/packages/attributes) | Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
+:cloud: [datatools](dart/datatools) | [![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) | Utilities to fetch data from HTTP and file resources and other data sources.
 
-All packages supports Dart [null-safety](https://dart.dev/null-safety) and 
-using them requires at least
-[Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
-from the stable channel. Please see the official 
-[null-safety migration guide](https://dart.dev/null-safety/migration-guide).
-
-## :page_facing_up: Code
-
-**This repository is at BETA stage, interfaces not fully final yet.** 
-
-This repository contains the following [Dart](https://dart.dev/) code 
-packages:
-
-Code @ GitHub | SDK | Description 
-------------- | --- | -----------
-:spiral_notepad: [attributes](dart/attributes) | Dart | Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
-:cloud: [datatools](dart/datatools) | Dart | Utilities to fetch data from HTTP and file resources and other data sources.
+**Code packages are at BETA stage, interfaces not fully final yet.** 
 
 ## :newspaper_roll: News
 
