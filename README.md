@@ -66,7 +66,7 @@ Please check history for previous releases from the
 
 ## :building_construction: Roadmap
 
-See [issues](https://github.com/navibyte/dataflow/issues) too.
+See [issues](https://github.com/navibyte/dataflow/issues).
 
 ## :house_with_garden: Authors
 
