@@ -1,9 +1,8 @@
 name: datatools
 description: A library for Dart to help fetching data from HTTP and file resources and other data sources.
-version: 0.8.0-pre.1
+version: 0.8.0
 repository: https://github.com/navibyte/dataflow
 homepage: https://github.com/navibyte/dataflow/tree/main/dart/datatools
-publish_to: none
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

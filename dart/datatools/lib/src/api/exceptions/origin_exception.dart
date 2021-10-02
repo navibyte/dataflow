@@ -40,10 +40,10 @@ abstract class OriginException extends ApiException {
       : super(message, reference: reference);
 
   /// Create an exception of [message], [failure] and [statusCode].
-  /// 
+  ///
   /// Optionally also [reference] and [reasonPhrase] can be given.
-  /// 
-  /// The default for [failure] is `undefined` and for [statusCode] is `0`.   
+  ///
+  /// The default for [failure] is `undefined` and for [statusCode] is `0`.
   factory OriginException.of(String message,
       {Uri? reference,
       OriginFailure failure,

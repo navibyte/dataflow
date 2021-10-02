@@ -54,8 +54,30 @@ abstract class DataElement<K> extends ValueAccessor<K> implements Counted {
   /// Other child objects are omitted from an iterable.
   Iterable<DataObject> get objects;
 
+  /// Returns a list of [T] mapped from child data objects using [map] function.
+  ///
+  /// An optional [limit] when provided limits the number of returned objects.
+  ///
+  /// The returned list is immutable.
+  ///
+  /// Other child objects (that cannot be represented as a data objects) are
+  /// omitted from an iterable.
+  List<T> objectsToList<T extends Object>(T Function(DataObject object) map,
+      {int? limit});
+
   /// Returns an iterable for childs that can be represented as [DataArray].
   ///
   /// Other child objects are omitted from an iterable.
   Iterable<DataArray> get arrays;
+
+  /// Returns a list of [T] mapped from child data arrays using [map] function.
+  ///
+  /// An optional [limit] when provided limits the number of returned objects.
+  ///
+  /// The returned list is immutable.
+  ///
+  /// Other child objects (that cannot be represented as a data array) are
+  /// omitted from an iterable.
+  List<T> arraysToList<T extends Object>(T Function(DataArray array) map,
+      {int? limit});
 }

@@ -4,9 +4,9 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import 'package:meta/meta.dart';
-
 import 'package:equatable/equatable.dart';
+
+import 'package:meta/meta.dart';
 
 import '../data.dart';
 import '../values.dart';

@@ -7,12 +7,19 @@
 // ignore_for_file: avoid_print
 
 /*
+Same as "data_object_example.dart" but:
+- NOT using the 'package:attributes/data.dart' package
+- so this sample uses only the Dart standard library 
+- also note that analysis_options.yaml has following recommend settings: 
+   implicit-casts: false
+  implicit-dynamic: false
+
 To test run this from command line: 
 
-dart example/data_object_example.dart
+dart example/json_object_example.dart
 */
 
-import 'package:attributes/data.dart';
+import 'dart:convert';
 
 void main() {
   _decodeSampleData();
@@ -28,15 +35,15 @@ class Address {
 
   const Address({required this.street, required this.city});
 
-  static Address fromData(DataObject data) => Address(
-        street: data.getString('street'),
-        city: data.getString('city'),
+  static Address fromJson(Map<String, dynamic> json) => Address(
+        street: json['street'] as String,
+        city: json['city'] as String,
       );
 
-  DataObject toData() => DataObject.of({
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'street': street,
         'city': city,
-      });
+      };
 }
 
 /// [Person] with [name], [age], an optional [length] and aggregated [address].
@@ -65,20 +72,20 @@ class Person {
       required this.address,
       required this.updatedUTC});
 
-  static Person fromData(DataObject data) => Person(
-      name: data.getString('name'),
-      age: data.getInt('age'),
-      length: data.tryDouble('length'),
-      address: Address.fromData(data.object('address')),
-      updatedUTC: data.getTimeUTC('updated'));
+  static Person fromJson(Map<String, dynamic> json) => Person(
+      name: json['name'] as String,
+      age: json['age'] as int,
+      length: json['length'] as double?,
+      address: Address.fromJson(json['address'] as Map<String, dynamic>),
+      updatedUTC: DateTime.parse(json['updated'] as String).toUtc());
 
-  DataObject toData() => DataObject.of({
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
         'age': age,
         if (length != null) 'length': length,
-        'address': address.toData(),
-        'updated': updatedUTC,
-      });
+        'address': address.toJson(),
+        'updated': updatedUTC.toIso8601String(),
+      };
 }
 
 /// [PersonCollection] model with a list of [Person] model objects.
@@ -100,11 +107,16 @@ class PersonCollection {
 
   const PersonCollection({required this.persons});
 
-  static PersonCollection fromData(DataArray data) =>
-      PersonCollection(persons: data.objectsToList(Person.fromData));
+  static PersonCollection fromJson(Iterable<dynamic> json) => PersonCollection(
+        persons: json
+            .map<Person>((dynamic element) =>
+                Person.fromJson(element as Map<String, dynamic>))
+            .toList(growable: false),
+      );
 
-  DataArray toData() =>
-      DataArray.from<Person>(persons, (person) => person.toData());
+  List<dynamic> toJson() => persons
+      .map<Map<String, dynamic>>((person) => person.toJson())
+      .toList(growable: false);
 }
 
 void _decodeSampleData() {
@@ -121,11 +133,11 @@ void _decodeSampleData() {
   ]
   ''';
 
-  // Decode JSON using DataArray.
-  final decoded = DataArray.decodeJson(jsonData);
+  // Decode JSON and cast it to `Iterable<Object?>`.
+  final decoded = json.decode(jsonData) as Iterable<dynamic>;
 
   // Map decoded objects to the domain model objects.
-  final personCollection = PersonCollection.fromData(decoded);
+  final personCollection = PersonCollection.fromJson(decoded);
 
   // Use domain objects, here just print names and address info.
   for (final person in personCollection.persons) {
@@ -133,5 +145,5 @@ void _decodeSampleData() {
   }
 
   // JSON data encoded from domain objects and outputted
-  print(personCollection.toData().encodeJson());
+  print(json.encode(personCollection.toJson()));
 }

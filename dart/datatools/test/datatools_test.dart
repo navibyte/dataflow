@@ -4,11 +4,11 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+import 'package:datatools/fetch_http.dart';
+
 import 'package:http/http.dart' as http;
 
 import 'package:test/test.dart';
-
-import 'package:datatools/fetch_http.dart';
 
 import 'test_snippets.dart';
 import 'test_utils.dart';

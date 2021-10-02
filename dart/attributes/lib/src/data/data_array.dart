@@ -6,9 +6,9 @@
 
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 import 'package:equatable/equatable.dart';
+
+import 'package:meta/meta.dart';
 
 import '../exceptions.dart';
 import '../utils/json.dart';
@@ -41,6 +41,12 @@ abstract class DataArray extends DataElement<int> {
   /// Creates a data array view backed by [source].
   factory DataArray.view(Iterable<Object?> source) = DataArrayView._exposed;
 
+  /// Creates a data array with items mapped from [source] list of [T].
+  static DataArray from<T extends Object>(
+          Iterable<T> source, Object Function(T) convert) =>
+      DataArrayView._protected(
+          source.map<Object>(convert).toList(growable: false));
+
   /// Creates a data array from [source] containing an encoded JSON Array.
   ///
   /// The underlying list is an object tree as parsed by the standard
@@ -71,7 +77,7 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
   /// Creates a data array view wrapping a source [list].
   ///
   /// If [isExposed] is true, then [list] can be exposed to side effects.
-  const DataArrayView(this.list, {this.isExposed = false});
+  DataArrayView(this.list, {this.isExposed = false});
 
   /// The [source] could be exposed to other code, potentially mutable.
   DataArrayView._exposed(Iterable<Object?> source)
@@ -199,8 +205,28 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
       list.where((e) => e is Obj || e is Map<String, Object?>).map(_toObject);
 
   @override
+  List<T> objectsToList<T extends Object>(T Function(Obj object) map,
+      {int? limit}) {
+    var objs = objects;
+    if (limit != null) {
+      objs = objs.take(limit);
+    }
+    return objs.map<T>(map).toList(growable: false);
+  }
+
+  @override
   Iterable<Arr> get arrays =>
       list.where((e) => e is Arr || e is Iterable<Object?>).map(_toArray);
+
+  @override
+  List<T> arraysToList<T extends Object>(T Function(Arr array) map,
+      {int? limit}) {
+    var arrs = arrays;
+    if (limit != null) {
+      arrs = arrs.take(limit);
+    }
+    return arrs.map<T>(map).toList(growable: false);
+  }
 
   Obj _toObject(Object? e) {
     if (e is Obj) {

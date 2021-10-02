@@ -1,6 +1,6 @@
 # :dart: Dataflow tools for Dart 
 
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/navibyte.svg?style=social&label=Follow%20%40navibyte)](https://twitter.com/navibyte)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/navibyte.svg?style=social&label=Follow%20%40navibyte)](https://twitter.com/navibyte) [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
 **Dataflow** - data structures, tools and utilities for 
 [Dart](https://dart.dev/) and [Flutter](https://flutter.dev/) mobile developers
@@ -21,9 +21,17 @@ Code           | Package | Description
 :spiral_notepad: [attributes](dart/attributes) | [![pub package](https://img.shields.io/pub/v/attributes.svg)](https://pub.dev/packages/attributes) | Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
 :cloud: [datatools](dart/datatools) | [![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) | Utilities to fetch data from HTTP and file resources and other data sources.
 
-**Code packages are at BETA stage, interfaces not fully final yet.** 
-
 ## :newspaper_roll: News
+
+2021-10-02
+* Release version 0.8.0.
+* Interfaces and class structures stabilized, no major breaking changes planned at least short-term.
+* Changes on [attributes](https://pub.dev/packages/attributes):
+  * [Apply very_good_analysis 2.3.0+ lint rules #13](https://github.com/navibyte/dataflow/issues/13)
+  * [Simplify mapping iterables in toData and fromData implementations of common domain model classes #12](https://github.com/navibyte/dataflow/issues/12)
+  * [Samples to compare using fromJson/toJson and using data objects provided by the attributes package #15](https://github.com/navibyte/dataflow/issues/15)
+* Changes on [datatools](https://pub.dev/packages/datatools):
+  * [Apply very_good_analysis 2.3.0+ lint rules #13](https://github.com/navibyte/dataflow/issues/13)
 
 2021-08-10
 * BETA version 0.7.0
@@ -58,12 +66,7 @@ Please check history for previous releases from the
 
 ## :building_construction: Roadmap
 
-Future enhancement **candidates** for [attributes](dart/attributes), not in any order:
-* [Add validation support on consuming data objects #11](https://github.com/navibyte/dataflow/issues/11)
-* [Simplify mapping iterables in toData and fromData implementations of common domain model classes #12](https://github.com/navibyte/dataflow/issues/12)
-* [Equality and hashcodes on collections #1](https://github.com/navibyte/dataflow/issues/1)
-
-See [other issues](https://github.com/navibyte/dataflow/issues) too.
+See [issues](https://github.com/navibyte/dataflow/issues) too.
 
 ## :house_with_garden: Authors
 

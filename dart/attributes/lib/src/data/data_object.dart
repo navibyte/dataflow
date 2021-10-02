@@ -6,10 +6,9 @@
 
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 import 'package:equatable/equatable.dart';
 
+import 'package:meta/meta.dart';
 
 import '../exceptions.dart';
 import '../utils/json.dart';
@@ -42,6 +41,11 @@ abstract class DataObject extends DataElement<String> {
   /// Creates a data object view backed by [source].
   factory DataObject.view(Map<String, Object?> source) =
       DataObjectView<DataObject, DataArray>._exposed;
+
+  /// Creates a data object with items mapped from [source] of [K] - [V] pairs.
+  static DataObject from<K extends Object, V extends Object>(
+          Map<K, V> source, MapEntry<String, Object> Function(K, V) convert) =>
+      DataObjectView._protected(source.map<String, Object>(convert));
 
   /// Creates a data object from [source] containing an encoded JSON Object.
   ///
@@ -212,8 +216,28 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
       .map(_toObject);
 
   @override
+  List<T> objectsToList<T extends Object>(T Function(Obj object) map,
+      {int? limit}) {
+    var objs = objects;
+    if (limit != null) {
+      objs = objs.take(limit);
+    }
+    return objs.map<T>(map).toList(growable: false);
+  }
+
+  @override
   Iterable<Arr> get arrays =>
       map.values.where((e) => e is Arr || e is Iterable<Object?>).map(_toArray);
+
+  @override
+  List<T> arraysToList<T extends Object>(T Function(Arr array) map,
+      {int? limit}) {
+    var arrs = arrays;
+    if (limit != null) {
+      arrs = arrs.take(limit);
+    }
+    return arrs.map<T>(map).toList(growable: false);
+  }
 
   Obj _toObject(Object? e) {
     if (e is Obj) {

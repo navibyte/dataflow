@@ -6,9 +6,9 @@
 
 // ignore_for_file: unused_local_variable, avoid_print
 
-import 'package:equatable/equatable.dart';
-
 import 'package:attributes/attributes.dart';
+
+import 'package:equatable/equatable.dart';
 
 /*
 To test run this from command line: 

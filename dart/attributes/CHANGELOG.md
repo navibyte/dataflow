@@ -1,6 +1,9 @@
 ## 0.8.0
 
+- Release version 0.8.0
 - [Apply very_good_analysis 2.3.0+ lint rules #13](https://github.com/navibyte/dataflow/issues/13)
+- [Simplify mapping iterables in toData and fromData implementations of common domain model classes #12](https://github.com/navibyte/dataflow/issues/12)
+- [Samples to compare using fromJson/toJson and using data objects provided by the attributes package #15](https://github.com/navibyte/dataflow/issues/15)
 
 ## 0.7.3
 

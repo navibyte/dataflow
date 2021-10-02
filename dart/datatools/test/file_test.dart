@@ -4,9 +4,9 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import 'package:test/test.dart';
-
 import 'package:datatools/fetch_file.dart';
+
+import 'package:test/test.dart';
 
 import 'test_snippets.dart';
 import 'test_utils.dart';

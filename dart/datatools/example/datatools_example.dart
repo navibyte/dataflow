@@ -9,14 +9,14 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:http/http.dart' as http;
+import 'package:datatools/fetch_api.dart';
+import 'package:datatools/fetch_file.dart';
+import 'package:datatools/fetch_http.dart';
+import 'package:datatools/meta_link.dart';
 
 import 'package:equatable/equatable.dart';
 
-import 'package:datatools/fetch_api.dart';
-import 'package:datatools/fetch_http.dart';
-import 'package:datatools/fetch_file.dart';
-import 'package:datatools/meta_link.dart';
+import 'package:http/http.dart' as http;
 
 /*
 To test run this from command line: 

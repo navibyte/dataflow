@@ -1,6 +1,6 @@
 <h2 align="center">Decode and encode structured data type-safely</h2>
 
-[![pub package](https://img.shields.io/pub/v/attributes.svg)](https://pub.dev/packages/attributes) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![pub package](https://img.shields.io/pub/v/attributes.svg)](https://pub.dev/packages/attributes) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
 Utilities to handle structured data like values, identifiers, entities, data 
 objects and data arrays. With JSON serialization support.
@@ -13,8 +13,6 @@ Key features:
 * **DataArray**: represent data like JSON Arrays or properties as a list
 * **Identifier**: an identifier, represented as `String`, `int` or `BigInt`
 * **Entity**: a dynamic data entity with optional id and required properties
-
-**This package is at BETA stage, interfaces not fully final yet.** 
 
 ## Introduction
 
@@ -46,23 +44,20 @@ class Person {
       required this.address,
       required this.updatedUTC});
 }
+
+class PersonCollection {
+  final Iterable<Person> persons;
+
+  const PersonCollection({required this.persons});
+}
 ```
 
 ### Serializing JSON traditionally without "attributes"
 
 There are multiple offically supported 
 [solutions](https://flutter.dev/docs/development/data-and-backend/json)
-to handle JSON like:
-* *Serializing JSON inline*
-  * access `Map<String, dynamic>` data directly using the `[]` operator 
-* *Serializing JSON inside model classes*
-  * to read JSON implement a `fromJson(Map<String, dynamic> json)` constructor
-  * to output JSON implement a `Map<String, dynamic> toJson()` method
-* *Serializing JSON using code generation libraries* 
-  * many library choices like [json_serializable](https://pub.dev/packages/json_serializable) or [built_value](https://pub.dev/packages/built_value), and others
-
-Of these solutions we review a basic tradional way of implementing a 
-`fromJson` factories and a `toJson` methods. 
+to handle JSON. Of these solutions we first review a basic tradional way of 
+implementing `fromJson` factories and `toJson` methods. 
 
 A sample with a simple domain model and JSON serialization support:
 
@@ -84,6 +79,16 @@ class Person {
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
       updatedUTC: DateTime.parse(json['updated'] as String).toUtc());
 }
+
+class PersonCollection {
+  // ... showing only decoding part ...
+  static PersonCollection fromJson(Iterable<dynamic> json) => PersonCollection(
+        persons: json
+            .map<Person>((dynamic element) =>
+                Person.fromJson(element as Map<String, dynamic>))
+            .toList(growable: false),
+      );
+}
 ```
 
 As you can see this approach may require a lot of type casts (at least when you
@@ -94,26 +99,20 @@ checks, value conversions and validations that can be error-prone. Also this
 solution couples your domain model to JSON encoding (be it a good or bad 
 feature).
 
-Such traditional domain models can be decoded and encoded as a common practise:
-
-```dart
-import 'dart:convert';
-
-// Decode JSON and create a domain model object.
-final person = Person.fromJson(
-      json.decode(someJsonData) as Map<String, dynamic>);
-
-// A domain model object encoded back to JSON.
-print(json.encode(person.toJson()));
-```
+You can find the [full sample code](example/json_object_example.dart) of this
+sample of NOT using the **attributes** package. 
 
 ### Type-safe and null-safe data objects to help
 
 The **attributes** package provides type-safe and null-safe accessors to consume
 structured data like JSON. 
 
-The following sample replaces `Map<String, dynamic>` types on serialization code
-with `DataObject` classes. This allows data fields accessed more type safely:
+The following sample replaces the `Map<String, dynamic>` type on serialization
+code with the `DataObject` class and the `Iterable<dynamic>` type with 
+the `DataArray` class.
+
+This allows data fields accessed more type safely, for example using 
+`DataObject` instances to access JSON Object data:
 * required fields read like `data.getString('street')` returning non-null values
 * optional fields read like `data.tryDouble('length')` returning nullable values
 
@@ -124,7 +123,7 @@ import 'package:attributes/data.dart';
 
 class Address {
   // ... showing only decoding part ...
-  factory Address.fromData(DataObject data) => Address(
+  static Address fromData(DataObject data) => Address(
         street: data.getString('street'),
         city: data.getString('city'),
       );
@@ -132,42 +131,29 @@ class Address {
 
 class Person {
   // ... showing only decoding part ...
-  factory Person.fromData(DataObject data) => Person(
+  static Person fromData(DataObject data) => Person(
       name: data.getString('name'),
       age: data.getInt('age'),
       length: data.tryDouble('length'),
       address: Address.fromData(data.object('address')),
       updatedUTC: data.getTimeUTC('updated'));
 }
-```
 
-Such type-safe domain models can be decoded and encoded as:
-
-```dart
-// Decode JSON and create a domain model object.
-final person = Person.fromData(DataObject.decodeJson(someJsonData));
-
-// A domain model object encoded back to JSON.
-print(person.toData().encodeJson());
+class PersonCollection {
+  // ... showing only decoding part ...
+  static PersonCollection fromData(DataArray data) =>
+      PersonCollection(persons: data.objectsToList(Person.fromData));
+}
 ```
 
 Please see the [full sample code](example/data_object_example.dart) describing
-both decoding and encoding parts, and data arrays along with data object 
-introduced above.
+both decoding and encoding parts.
 
 When comparing to the traditional way, we still need almost as much lines to be
 coded but reading data is much more safe when considering types and
 nullability. 
 
 This code is a bit cleaner too as a bonus!
-
-The `DataObject` interface does not depend on JSON encoding, even if this
-sample populated an generic data object using the `DataObject.decodeJson()` 
-factory and a JSON data source, and then it was accessed by domain classes in 
-`Address.fromData(DataObject data)` and `Person.fromData(DataObject data)` 
-factories. Anyway it's possible to extend `DataObject` class to support 
-also other encodings than JSON. However, such support is out of scope of this
-library.
 
 ## Usage
 
@@ -408,14 +394,13 @@ double toDoubleValue(Object? data, {double? min, double? max}) {
 The package supports Dart [null-safety](https://dart.dev/null-safety) and 
 using it requires at least
 [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
-from the stable channel. Please see the official 
-[null-safety migration guide](https://dart.dev/null-safety/migration-guide).
+from the stable channel. 
 
 In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  attributes: ^0.7.3
+  attributes: ^0.8.0
 ```
 
 All dependencies used by `attributes` are also ready for 

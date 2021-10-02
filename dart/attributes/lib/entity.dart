@@ -17,5 +17,3 @@ export 'src/entity.dart';
 
 // export also `Identifier` - essential class for entities.
 export 'src/values.dart' show Identifier;
-
-

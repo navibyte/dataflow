@@ -1,6 +1,6 @@
 <h2 align="center">Unified Fetch API for HTTP and files</h2>
 
-[![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
 Key features:
 * Fetch data from HTTP and file resources and other data sources.
@@ -135,14 +135,13 @@ Key methods and properties available on the `Content` interface are:
 The package supports Dart [null-safety](https://dart.dev/null-safety) and 
 using it requires at least
 [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
-from the stable channel. Please see the official 
-[null-safety migration guide](https://dart.dev/null-safety/migration-guide).
+from the stable channel. 
 
 In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  datatools: ^0.7.0 
+  datatools: ^0.8.0 
 ```
 
 All dependencies used by `datatools` are also ready for 

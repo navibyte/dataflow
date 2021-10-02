@@ -6,9 +6,9 @@
 
 // ignore_for_file: unnecessary_lambdas, avoid_catches_without_on_clauses
 
-import 'package:test/test.dart';
-
 import 'package:attributes/attributes.dart';
+
+import 'package:test/test.dart';
 
 Future<void> main() async {
   group('Test DataArray', () {

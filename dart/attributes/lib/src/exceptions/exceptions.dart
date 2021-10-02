@@ -28,7 +28,7 @@ class InvalidValueException extends FormatException {
 /// A [FormatException] notifying about an unsupported conversion.
 class ConversionException extends FormatException {
   /// Create an exception of a reference to [data] and a [target] type.
-  /// 
+  ///
   /// Optionally [message] can be given too.
   const ConversionException(
       {Object? data, required Type target, String? message})
