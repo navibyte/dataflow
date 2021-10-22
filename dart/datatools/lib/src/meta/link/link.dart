@@ -14,13 +14,14 @@ import 'package:meta/meta.dart';
 @immutable
 class Link with EquatableMixin {
   /// Link with [href]. Optional: [rel], [type], [hreflang], [title], [length].
-  const Link(
-      {required this.href,
-      this.rel,
-      this.type,
-      this.hreflang,
-      this.title,
-      this.length});
+  const Link({
+    required this.href,
+    this.rel,
+    this.type,
+    this.hreflang,
+    this.title,
+    this.length,
+  });
 
   /// A link from decoded JSON objects.
   Link.fromJson(Map<String, Object?> json)

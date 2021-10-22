@@ -41,8 +41,8 @@ Future<void> _httpFetcher() async {
 
   // create a simple fetcher with an endpoint and headers
   final fetcher = HttpFetcher.simple(
-          endpoints: [Uri.parse('https://jsonplaceholder.typicode.com/')])
-      .headers({'user-agent': 'datatools-sample'});
+    endpoints: [Uri.parse('https://jsonplaceholder.typicode.com/')],
+  ).headers({'user-agent': 'datatools-sample'});
 
   // fetch by a relative path, get content as JSON and handle errors
   try {
@@ -100,9 +100,10 @@ Future<void> _httpFetcherWithClient() async {
   final client = http.Client();
   try {
     // now create a fetcher with the client just created and endpoints
-    final fetcher = HttpFetcher.client(client,
-            endpoints: [Uri.parse('https://jsonplaceholder.typicode.com/')])
-        .headers({'user-agent': 'datatools-sample'});
+    final fetcher = HttpFetcher.client(
+      client,
+      endpoints: [Uri.parse('https://jsonplaceholder.typicode.com/')],
+    ).headers({'user-agent': 'datatools-sample'});
 
     // fetch titles for posts 4 and 5 - both requests should use same client
     try {
@@ -147,10 +148,12 @@ void _metadataStructures() {
   print('Create some basic metadata structures.');
 
   // Link
-  print(const Link(
-    href: 'http://example.com',
-    rel: 'alternate',
-    type: 'application/json',
-    title: 'Other content',
-  ));
+  print(
+    const Link(
+      href: 'http://example.com',
+      rel: 'alternate',
+      type: 'application/json',
+      title: 'Other content',
+    ),
+  );
 }

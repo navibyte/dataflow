@@ -65,19 +65,21 @@ class Person {
   final Address address;
   final DateTime updatedUTC;
 
-  const Person(
-      {required this.name,
-      required this.age,
-      this.length,
-      required this.address,
-      required this.updatedUTC});
+  const Person({
+    required this.name,
+    required this.age,
+    this.length,
+    required this.address,
+    required this.updatedUTC,
+  });
 
   static Person fromJson(Map<String, dynamic> json) => Person(
-      name: json['name'] as String,
-      age: json['age'] as int,
-      length: json['length'] as double?,
-      address: Address.fromJson(json['address'] as Map<String, dynamic>),
-      updatedUTC: DateTime.parse(json['updated'] as String).toUtc());
+        name: json['name'] as String,
+        age: json['age'] as int,
+        length: json['length'] as double?,
+        address: Address.fromJson(json['address'] as Map<String, dynamic>),
+        updatedUTC: DateTime.parse(json['updated'] as String).toUtc(),
+      );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
@@ -109,8 +111,10 @@ class PersonCollection {
 
   static PersonCollection fromJson(Iterable<dynamic> json) => PersonCollection(
         persons: json
-            .map<Person>((dynamic element) =>
-                Person.fromJson(element as Map<String, dynamic>))
+            .map<Person>(
+              (dynamic element) =>
+                  Person.fromJson(element as Map<String, dynamic>),
+            )
             .toList(growable: false),
       );
 

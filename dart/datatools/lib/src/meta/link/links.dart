@@ -26,8 +26,9 @@ abstract class Links {
 
   /// Metadata container for links from JSON objects.
   factory Links.fromJson(Iterable<Object?> json) => Links.view(
-      // ignore: cast_nullable_to_non_nullable
-      json.map((e) => Link.fromJson(e as Map<String, Object?>)));
+        // ignore: cast_nullable_to_non_nullable
+        json.map((e) => Link.fromJson(e as Map<String, Object?>)),
+      );
 
   /// All links iterated.
   Iterable<Link> get all;
@@ -163,10 +164,12 @@ class _Links extends Links with EquatableMixin {
 
   @override
   Iterable<Link> byRel(String rel, {String? type, String? hreflang}) =>
-      all.where((e) =>
-          e.rel == rel &&
-          (type == null || e.type == type) &&
-          (hreflang == null || e.hreflang == hreflang));
+      all.where(
+        (e) =>
+            e.rel == rel &&
+            (type == null || e.type == type) &&
+            (hreflang == null || e.hreflang == hreflang),
+      );
 
   @override
   List<Object?> get props => [all];

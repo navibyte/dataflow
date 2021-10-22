@@ -38,11 +38,14 @@ abstract class Head {
   ///
   /// This checks only primary type and sub type components of "content-type"
   /// header values.
-  bool hasType(String primaryType, String subType0,
-      [String? orSubType1,
-      String? orSubType2,
-      String? orSubType3,
-      String? orSubType4]) {
+  bool hasType(
+    String primaryType,
+    String subType0, [
+    String? orSubType1,
+    String? orSubType2,
+    String? orSubType3,
+    String? orSubType4,
+  ]) {
     if (mediaType.type == primaryType) {
       final sub = mediaType.subtype;
       if (sub == subType0) return true;

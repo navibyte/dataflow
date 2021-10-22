@@ -102,16 +102,20 @@ Future<void> main() async {
       for (final p in p1) {
         expect(p.toValueMap(), {'foo': 1, 'bar': 2});
         expect(p.toValueMap<int>(), {'foo': 1, 'bar': 2});
-        expect(p.toValueMap<BigInt>(),
-            {'foo': BigInt.from(1), 'bar': BigInt.from(2)});
+        expect(
+          p.toValueMap<BigInt>(),
+          {'foo': BigInt.from(1), 'bar': BigInt.from(2)},
+        );
         expect(p.toValueMap<num>(), <String, num>{'foo': 1, 'bar': 2});
         expect(p.toValueMap<double>(), {'foo': 1.0, 'bar': 2.0});
         expect(p.toValueMap<String>(), {'foo': '1', 'bar': '2'});
         expect(p.toValueMap<bool>(), {'foo': true, 'bar': true});
         expect(p.toNullableValueMap(), {'foo': 1, 'bar': 2});
         expect(p.toNullableValueMap<int>(), {'foo': 1, 'bar': 2});
-        expect(p.toNullableValueMap<BigInt>(),
-            {'foo': BigInt.from(1), 'bar': BigInt.from(2)});
+        expect(
+          p.toNullableValueMap<BigInt>(),
+          {'foo': BigInt.from(1), 'bar': BigInt.from(2)},
+        );
         expect(p.toNullableValueMap<num>(), <String, num>{'foo': 1, 'bar': 2});
         expect(p.toNullableValueMap<double>(), {'foo': 1.0, 'bar': 2.0});
         expect(p.toNullableValueMap<String>(), {'foo': '1', 'bar': '2'});
@@ -132,16 +136,26 @@ Future<void> main() async {
         expect(() => p.toValueMap<bool>(), throwsFormatException);
         expect(p.toNullableValueMap(), {'foo': 1, 'bar': 2, 'baz': null});
         expect(p.toNullableValueMap<int>(), {'foo': 1, 'bar': 2, 'baz': null});
-        expect(p.toNullableValueMap<BigInt>(),
-            {'foo': BigInt.from(1), 'bar': BigInt.from(2), 'baz': null});
-        expect(p.toNullableValueMap<num>(),
-            <String, num?>{'foo': 1, 'bar': 2, 'baz': null});
-        expect(p.toNullableValueMap<double>(),
-            {'foo': 1.0, 'bar': 2.0, 'baz': null});
-        expect(p.toNullableValueMap<String>(),
-            {'foo': '1', 'bar': '2', 'baz': null});
-        expect(p.toNullableValueMap<bool>(),
-            {'foo': true, 'bar': true, 'baz': null});
+        expect(
+          p.toNullableValueMap<BigInt>(),
+          {'foo': BigInt.from(1), 'bar': BigInt.from(2), 'baz': null},
+        );
+        expect(
+          p.toNullableValueMap<num>(),
+          <String, num?>{'foo': 1, 'bar': 2, 'baz': null},
+        );
+        expect(
+          p.toNullableValueMap<double>(),
+          {'foo': 1.0, 'bar': 2.0, 'baz': null},
+        );
+        expect(
+          p.toNullableValueMap<String>(),
+          {'foo': '1', 'bar': '2', 'baz': null},
+        );
+        expect(
+          p.toNullableValueMap<bool>(),
+          {'foo': true, 'bar': true, 'baz': null},
+        );
       }
     });
   });

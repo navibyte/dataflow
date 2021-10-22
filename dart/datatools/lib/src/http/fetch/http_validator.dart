@@ -14,4 +14,6 @@ import 'http_exception.dart';
 /// Should throw a [HttpException] if a response is not successul (ie. other
 /// than HTTP 200 OK - or other validation rules depending on the use case).
 typedef HttpValidator = HttpContent Function(
-    Uri reference, http.BaseResponse response);
+  Uri reference,
+  http.BaseResponse response,
+);

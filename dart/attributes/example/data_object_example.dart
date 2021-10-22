@@ -58,19 +58,21 @@ class Person {
   final Address address;
   final DateTime updatedUTC;
 
-  const Person(
-      {required this.name,
-      required this.age,
-      this.length,
-      required this.address,
-      required this.updatedUTC});
+  const Person({
+    required this.name,
+    required this.age,
+    this.length,
+    required this.address,
+    required this.updatedUTC,
+  });
 
   static Person fromData(DataObject data) => Person(
-      name: data.getString('name'),
-      age: data.getInt('age'),
-      length: data.tryDouble('length'),
-      address: Address.fromData(data.object('address')),
-      updatedUTC: data.getTimeUTC('updated'));
+        name: data.getString('name'),
+        age: data.getInt('age'),
+        length: data.tryDouble('length'),
+        address: Address.fromData(data.object('address')),
+        updatedUTC: data.getTimeUTC('updated'),
+      );
 
   DataObject toData() => DataObject.of({
         'name': name,

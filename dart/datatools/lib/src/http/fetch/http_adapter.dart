@@ -39,8 +39,10 @@ abstract class HttpAdapter {
   ///
   /// An implementation could provide re-try or forwarding mechanism, only the
   /// final response is returned to a client.
-  Future<http.StreamedResponse> getStreamed(Uri uri,
-      {Map<String, String>? headers});
+  Future<http.StreamedResponse> getStreamed(
+    Uri uri, {
+    Map<String, String>? headers,
+  });
 }
 
 class _HttpClientAdapterBase extends HttpAdapter {
@@ -59,8 +61,10 @@ class _HttpClientAdapterBase extends HttpAdapter {
   }
 
   @override
-  Future<http.StreamedResponse> getStreamed(Uri uri,
-      {Map<String, String>? headers}) {
+  Future<http.StreamedResponse> getStreamed(
+    Uri uri, {
+    Map<String, String>? headers,
+  }) {
     // do streamed GET request using persistent or one-shot HTTP client
     final req = http.Request('GET', uri);
     if (headers != null) {

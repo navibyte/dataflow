@@ -56,7 +56,10 @@ abstract class Identifier implements StringOrInteger {
 @immutable
 class _IdentifierBase extends Identifier with EquatableMixin {
   const _IdentifierBase(this.storage)
-      : assert(storage is String || storage is int || storage is BigInt);
+      : assert(
+          storage is String || storage is int || storage is BigInt,
+          'Wrong type for an identifier.',
+        );
 
   /// The stored id as a `String`, `int` or `BigInt` value.
   final Object storage;

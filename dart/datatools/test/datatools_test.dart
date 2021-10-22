@@ -23,8 +23,10 @@ Future<void> main() async {
     test('Read using fetch functions', () async {
       expect(await fetchText(urlPosts2), post2);
       expect(b2s(await fetchBytes(urlPosts2)), post2);
-      expect((await fetchJson(urlPosts2) as Map<String, dynamic>)['title'],
-          post2Title);
+      expect(
+        (await fetchJson(urlPosts2) as Map<String, dynamic>)['title'],
+        post2Title,
+      );
       expect(bd2s(await (await fetch(urlPosts2)).byteData(40, 52)), post2Title);
       expect(await (await fetchStream(urlPosts2)).text, post2);
     });
@@ -50,8 +52,9 @@ Future<void> main() async {
       expect(await fetcher.fetchText(refPosts2), post2);
       expect(b2s(await fetcher.fetchBytes(refPosts2)), post2);
       expect(
-          (await fetcher.fetchJson(refPosts2) as Map<String, dynamic>)['title'],
-          post2Title);
+        (await fetcher.fetchJson(refPosts2) as Map<String, dynamic>)['title'],
+        post2Title,
+      );
     });
 
     test('Fetch a body, then meta and head information', () async {
@@ -71,8 +74,10 @@ Future<void> main() async {
       expect(bd2s(await content.byteData(40, 52)), post2Title);
       expect(bd2s(await content.byteData(0, 40)), post2FromStartToTitle);
       expect(bd2s(await content.byteData(40)), post2FromTitleToEnd);
-      expect((await content.decodeJson() as Map<String, dynamic>)['title'],
-          post2Title);
+      expect(
+        (await content.decodeJson() as Map<String, dynamic>)['title'],
+        post2Title,
+      );
     });
 
     test('Fetch a stream, then read text from strem', () async {

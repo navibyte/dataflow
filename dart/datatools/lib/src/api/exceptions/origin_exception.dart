@@ -44,11 +44,13 @@ abstract class OriginException extends ApiException {
   /// Optionally also [reference] and [reasonPhrase] can be given.
   ///
   /// The default for [failure] is `undefined` and for [statusCode] is `0`.
-  factory OriginException.of(String message,
-      {Uri? reference,
-      OriginFailure failure,
-      int statusCode,
-      String? reasonPhrase}) = _OriginExceptionBase;
+  factory OriginException.of(
+    String message, {
+    Uri? reference,
+    OriginFailure failure,
+    int statusCode,
+    String? reasonPhrase,
+  }) = _OriginExceptionBase;
 
   /// Common failure type. By default `undefined` if not set.
   OriginFailure get failure => OriginFailure.undefined;
@@ -79,12 +81,13 @@ abstract class OriginException extends ApiException {
 }
 
 class _OriginExceptionBase extends OriginException {
-  const _OriginExceptionBase(String message,
-      {Uri? reference,
-      this.failure = OriginFailure.undefined,
-      this.statusCode = 0,
-      this.reasonPhrase})
-      : super(message, reference: reference);
+  const _OriginExceptionBase(
+    String message, {
+    Uri? reference,
+    this.failure = OriginFailure.undefined,
+    this.statusCode = 0,
+    this.reasonPhrase,
+  }) : super(message, reference: reference);
 
   @override
   final OriginFailure failure;

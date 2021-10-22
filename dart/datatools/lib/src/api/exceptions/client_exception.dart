@@ -16,9 +16,10 @@ class ClientException extends ApiException {
   final dynamic cause;
 
   /// Create an exception describing that [reference] is not a relative one.
-  factory ClientException.notRelative(Uri reference) =>
-      ClientException('$reference is not relative reference',
-          reference: reference);
+  factory ClientException.notRelative(Uri reference) => ClientException(
+        '$reference is not relative reference',
+        reference: reference,
+      );
 
   /// Create an exception describing that [reference] is not allowd.
   factory ClientException.uriNotAllowed(Uri reference) =>
@@ -26,29 +27,40 @@ class ClientException extends ApiException {
 
   /// Create an exception describing [type] is not supported for [reference].
   factory ClientException.typeNotSupported(Uri reference, Type type) =>
-      ClientException('Requested $type for $reference is not supported',
-          reference: reference);
+      ClientException(
+        'Requested $type for $reference is not supported',
+        reference: reference,
+      );
 
   /// Create an exception describing data of [dataType] is not supported.
   ///
   /// An exception related to [reference].
   factory ClientException.dataNotSupported(Uri reference, Type dataType) =>
-      ClientException('Data of $dataType for $reference is not supported',
-          reference: reference);
+      ClientException(
+        'Data of $dataType for $reference is not supported',
+        reference: reference,
+      );
 
   /// Create an exception describing data of [dataType] is not supported.
   ///
   /// An exception related to [reference] and [type] for expected for a type.
   factory ClientException.dataForTypeNotSupported(
-          Uri reference, Type type, Type dataType) =>
+    Uri reference,
+    Type type,
+    Type dataType,
+  ) =>
       ClientException(
-          'Data of $dataType (requested $type) for $reference is not supported',
-          reference: reference);
+        'Data of $dataType (requested $type) for $reference is not supported',
+        reference: reference,
+      );
 
   /// Create an exception telling that calling [reference] failed with [cause].
   factory ClientException.failed(Uri reference, dynamic cause) =>
-      ClientException('Calling $reference failed: $cause',
-          cause: cause, reference: reference);
+      ClientException(
+        'Calling $reference failed: $cause',
+        cause: cause,
+        reference: reference,
+      );
 
   /// Create an exception telling that a opening stream failed with [cause].
   factory ClientException.openingStreamFailed(dynamic cause) =>

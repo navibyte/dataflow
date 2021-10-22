@@ -1,8 +1,9 @@
 name: attributes
 description: Decode and encode structured data type-safely from JSON. Utilities for data objects, entities and values.
-version: 0.8.0
+version: 0.8.1
 repository: https://github.com/navibyte/dataflow
 homepage: https://github.com/navibyte/dataflow/tree/main/dart/attributes
+publish_to: none
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -14,4 +15,4 @@ dependencies:
 
 dev_dependencies:
   test: ^1.16.4
-  very_good_analysis: ^2.3.0
+  very_good_analysis: ^2.4.0

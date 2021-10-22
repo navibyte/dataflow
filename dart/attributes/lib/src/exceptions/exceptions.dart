@@ -30,10 +30,13 @@ class ConversionException extends FormatException {
   /// Create an exception of a reference to [data] and a [target] type.
   ///
   /// Optionally [message] can be given too.
-  const ConversionException(
-      {Object? data, required Type target, String? message})
-      : super(
-            message ??
-                'Unsupported conversion to $target or invalid source data.',
-            data);
+  const ConversionException({
+    Object? data,
+    required Type target,
+    String? message,
+  }) : super(
+          message ??
+              'Unsupported conversion to $target or invalid source data.',
+          data,
+        );
 }

@@ -44,7 +44,9 @@ abstract class DataObject extends DataElement<String> {
 
   /// Creates a data object with items mapped from [source] of [K] - [V] pairs.
   static DataObject from<K extends Object, V extends Object>(
-          Map<K, V> source, MapEntry<String, Object> Function(K, V) convert) =>
+    Map<K, V> source,
+    MapEntry<String, Object> Function(K, V) convert,
+  ) =>
       DataObjectView._protected(source.map<String, Object>(convert));
 
   /// Creates a data object from [source] containing an encoded JSON Object.
@@ -53,7 +55,8 @@ abstract class DataObject extends DataElement<String> {
   /// `json.decode()` of the `dart:convert` package.
   factory DataObject.decodeJson(String source) =>
       DataObjectView<DataObject, DataArray>._protected(
-          json.decode(source) as Map<String, Object?>);
+        json.decode(source) as Map<String, Object?>,
+      );
 
   /// Creates an empty data object.
   factory DataObject.empty() => _empty;
@@ -180,11 +183,13 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
 
   @override
   String encodeJson({Object Function(DateTime time)? encodeTime}) =>
-      json.encode(toEncodable(),
-          toEncodable: encodeTime != null
-              ? (dynamic object) =>
-                  encodeJsonObject(object, encodeTime: encodeTime)
-              : encodeJsonObject);
+      json.encode(
+        toEncodable(),
+        toEncodable: encodeTime != null
+            ? (dynamic object) =>
+                encodeJsonObject(object, encodeTime: encodeTime)
+            : encodeJsonObject,
+      );
 
   @override
   Obj object(String key) => _toObject(this[key]);
@@ -216,8 +221,10 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
       .map(_toObject);
 
   @override
-  List<T> objectsToList<T extends Object>(T Function(Obj object) map,
-      {int? limit}) {
+  List<T> objectsToList<T extends Object>(
+    T Function(Obj object) map, {
+    int? limit,
+  }) {
     var objs = objects;
     if (limit != null) {
       objs = objs.take(limit);
@@ -230,8 +237,10 @@ class DataObjectView<Obj extends DataObject, Arr extends DataArray>
       map.values.where((e) => e is Arr || e is Iterable<Object?>).map(_toArray);
 
   @override
-  List<T> arraysToList<T extends Object>(T Function(Arr array) map,
-      {int? limit}) {
+  List<T> arraysToList<T extends Object>(
+    T Function(Arr array) map, {
+    int? limit,
+  }) {
     var arrs = arrays;
     if (limit != null) {
       arrs = arrs.take(limit);

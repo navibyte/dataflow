@@ -24,8 +24,11 @@ class FileFetcher extends Fetcher<FileContent> with FetchMixin<FileContent> {
   ///
   /// Optionally charset [encoding] or [contentType] can be set to specify those
   /// attributes of files accessed by this client.
-  factory FileFetcher.basePath(String path,
-          {Encoding encoding = utf8, String? contentType}) =>
+  factory FileFetcher.basePath(
+    String path, {
+    Encoding encoding = utf8,
+    String? contentType,
+  }) =>
       FileFetcher._(path, encoding, contentType);
 
   FileFetcher._(this._basePath, this._encoding, this._contentType);
@@ -59,16 +62,21 @@ class FileFetcher extends Fetcher<FileContent> with FetchMixin<FileContent> {
   @override
   Future<FileContent> fetchStream(Uri reference) => fetch(reference);
 
-  Future<File> _fileFromUri(Uri reference,
-      [bool expectFileExists = true]) async {
+  Future<File> _fileFromUri(
+    Uri reference, [
+    bool expectFileExists = true,
+  ]) async {
     if (reference.hasAuthority || reference.isAbsolute) {
       throw ClientException.notRelative(reference);
     }
     final file = File(p.join(_basePath, reference.path));
     if (expectFileExists) {
       if (!file.existsSync()) {
-        throw OriginException.of('File not existing',
-            reference: reference, failure: OriginFailure.notFound);
+        throw OriginException.of(
+          'File not existing',
+          reference: reference,
+          failure: OriginFailure.notFound,
+        );
       }
     }
     return file;

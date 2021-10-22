@@ -64,6 +64,8 @@ abstract class FetchApi<C extends Content> {
   /// Throws an `ApiException` if fetching fails. Implementations like HTTP
   /// fetcher may also throw other status codes than codes for success as
   /// exceptions.
-  Future<dynamic> fetchJson(Uri reference,
-      {Object? Function(Object? key, Object? value)? reviver});
+  Future<dynamic> fetchJson(
+    Uri reference, {
+    Object? Function(Object? key, Object? value)? reviver,
+  });
 }

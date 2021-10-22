@@ -74,7 +74,10 @@ class HttpContent extends Content {
         return ByteData.sublistView(await res.stream.toBytes(), start, end);
       } else {
         return ByteData.sublistView(
-            (res as http.Response).bodyBytes, start, end);
+          (res as http.Response).bodyBytes,
+          start,
+          end,
+        );
       }
     } on Exception catch (e) {
       throw ClientException.readingBytesFailed(e);
@@ -96,8 +99,9 @@ class HttpContent extends Content {
   }
 
   @override
-  Future<dynamic> decodeJson(
-      {Object? Function(Object? key, Object? value)? reviver}) async {
+  Future<dynamic> decodeJson({
+    Object? Function(Object? key, Object? value)? reviver,
+  }) async {
     try {
       final res = response;
       if (res is http.StreamedResponse) {

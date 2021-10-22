@@ -9,8 +9,10 @@ import '../../data.dart';
 /// A helper utilility function used on `json.encode()`.
 ///
 /// Not to be exported. Implementation may change in future.
-Object? encodeJsonObject(dynamic object,
-    {Object Function(DateTime time)? encodeTime}) {
+Object? encodeJsonObject(
+  dynamic object, {
+  Object Function(DateTime time)? encodeTime,
+}) {
   if (object is DataObjectView) {
     return object.toEncodable();
   } else if (object is DataArrayView) {

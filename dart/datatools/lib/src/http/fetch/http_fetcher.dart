@@ -78,7 +78,11 @@ class HttpFetcher extends Fetcher<HttpContent> with FetchMixin<HttpContent> {
       );
 
   HttpFetcher._(
-      this._adapter, this._baseHeaders, this._resolver, this._validator);
+    this._adapter,
+    this._baseHeaders,
+    this._resolver,
+    this._validator,
+  );
 
   final HttpAdapter _adapter;
   final Map<String, String>? _baseHeaders;

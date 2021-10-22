@@ -158,8 +158,11 @@ bool toBoolValue(Object? data) {
 /// instance is used in parsing.
 ///
 /// Otherwise a FormatException is thrown.
-DateTime toTimeUTCValue(Object? data,
-    {DateFormat? sourceFormat, bool isUTCSource = false}) {
+DateTime toTimeUTCValue(
+  Object? data, {
+  DateFormat? sourceFormat,
+  bool isUTCSource = false,
+}) {
   if (data == null) throw const NullValueException();
   if (data is DateTime) {
     return data.toUtc();
@@ -196,9 +199,10 @@ DateTime toTimeMillisUTCValue(Object? data, {bool isUTCSource = false}) {
     return DateTime.fromMillisecondsSinceEpoch(data, isUtc: isUTCSource)
         .toUtc();
   } else if (data is String) {
-    return DateTime.fromMillisecondsSinceEpoch(int.parse(data),
-            isUtc: isUTCSource)
-        .toUtc();
+    return DateTime.fromMillisecondsSinceEpoch(
+      int.parse(data),
+      isUtc: isUTCSource,
+    ).toUtc();
   }
   throw ConversionException(target: DateTime, data: data);
 }
@@ -255,8 +259,10 @@ T? toNullableValueOf<T extends Object>(Object? data) =>
 ///
 /// Supported types for [T]: `String`, `num`, `int`, `BigInt`, `double`,
 /// `bool`, `DateTime`, `Identifier`, `Object`.
-Iterable<T> toValuesOf<T extends Object>(Iterable<Object?> list,
-    {bool isExposed = false}) {
+Iterable<T> toValuesOf<T extends Object>(
+  Iterable<Object?> list, {
+  bool isExposed = false,
+}) {
   if (list is Iterable<T>) {
     // value is an iterable with items of the asked type
     return isExposed ? List<T>.unmodifiable(list) : list;
@@ -278,8 +284,10 @@ Iterable<T> toValuesOf<T extends Object>(Iterable<Object?> list,
 ///
 /// Supported types for [T]: `String`, `num`, `int`, `BigInt`, `double`,
 /// `bool`, `DateTime`, `Identifier`, `Object`.
-Iterable<T?> toNullableValuesOf<T extends Object>(Iterable<Object?> list,
-    {bool isExposed = false}) {
+Iterable<T?> toNullableValuesOf<T extends Object>(
+  Iterable<Object?> list, {
+  bool isExposed = false,
+}) {
   if (list is Iterable<T?>) {
     // value is an iterable with items of the asked type
     return isExposed ? List<T?>.unmodifiable(list) : list;
@@ -304,8 +312,10 @@ Iterable<T?> toNullableValuesOf<T extends Object>(Iterable<Object?> list,
 ///
 /// Supported types for [V]: `String`, `num`, `int`, `BigInt`, `double`,
 /// `bool`, `DateTime`, `Identifier`, `Object`.
-Map<K, V> toValueMapOf<K extends Object, V extends Object>(Map<K, Object?> map,
-    {bool isExposed = false}) {
+Map<K, V> toValueMapOf<K extends Object, V extends Object>(
+  Map<K, Object?> map, {
+  bool isExposed = false,
+}) {
   if (map is Map<K, V>) {
     return isExposed ? Map<K, V>.unmodifiable(map) : map;
   } else {
@@ -321,15 +331,17 @@ Map<K, V> toValueMapOf<K extends Object, V extends Object>(Map<K, Object?> map,
 /// Supported types for [V]: `String`, `num`, `int`, `BigInt`, `double`,
 /// `bool`, `DateTime`, `Identifier`, `Object`.
 Map<K, V?> toNullableValueMapOf<K extends Object, V extends Object>(
-    Map<K, Object?> map,
-    {bool isExposed = false}) {
+  Map<K, Object?> map, {
+  bool isExposed = false,
+}) {
   if (map is Map<K, V?>) {
     return isExposed ? Map<K, V?>.unmodifiable(map) : map;
   } else if (map is Map<K, V>) {
     return isExposed ? Map<K, V?>.unmodifiable(map) : map.cast<K, V?>();
   } else {
     return map.map<K, V?>(
-        (key, value) => MapEntry<K, V?>(key, toNullableValueOf<V>(value)));
+      (key, value) => MapEntry<K, V?>(key, toNullableValueOf<V>(value)),
+    );
   }
 }
 

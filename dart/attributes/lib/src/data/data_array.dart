@@ -43,9 +43,12 @@ abstract class DataArray extends DataElement<int> {
 
   /// Creates a data array with items mapped from [source] list of [T].
   static DataArray from<T extends Object>(
-          Iterable<T> source, Object Function(T) convert) =>
+    Iterable<T> source,
+    Object Function(T) convert,
+  ) =>
       DataArrayView._protected(
-          source.map<Object>(convert).toList(growable: false));
+        source.map<Object>(convert).toList(growable: false),
+      );
 
   /// Creates a data array from [source] containing an encoded JSON Array.
   ///
@@ -170,11 +173,13 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
 
   @override
   String encodeJson({Object Function(DateTime time)? encodeTime}) =>
-      json.encode(toEncodable(),
-          toEncodable: encodeTime != null
-              ? (dynamic object) =>
-                  encodeJsonObject(object, encodeTime: encodeTime)
-              : encodeJsonObject);
+      json.encode(
+        toEncodable(),
+        toEncodable: encodeTime != null
+            ? (dynamic object) =>
+                encodeJsonObject(object, encodeTime: encodeTime)
+            : encodeJsonObject,
+      );
 
   @override
   Obj object(int key) => _toObject(this[key]);
@@ -205,8 +210,10 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
       list.where((e) => e is Obj || e is Map<String, Object?>).map(_toObject);
 
   @override
-  List<T> objectsToList<T extends Object>(T Function(Obj object) map,
-      {int? limit}) {
+  List<T> objectsToList<T extends Object>(
+    T Function(Obj object) map, {
+    int? limit,
+  }) {
     var objs = objects;
     if (limit != null) {
       objs = objs.take(limit);
@@ -219,8 +226,10 @@ class DataArrayView<Obj extends DataObject, Arr extends DataArray>
       list.where((e) => e is Arr || e is Iterable<Object?>).map(_toArray);
 
   @override
-  List<T> arraysToList<T extends Object>(T Function(Arr array) map,
-      {int? limit}) {
+  List<T> arraysToList<T extends Object>(
+    T Function(Arr array) map, {
+    int? limit,
+  }) {
     var arrs = arrays;
     if (limit != null) {
       arrs = arrs.take(limit);

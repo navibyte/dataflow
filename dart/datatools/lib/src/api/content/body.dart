@@ -38,6 +38,7 @@ abstract class Body {
   /// See `JsonCodec` of the `dart:convert` package for more information.
   ///
   /// Throws [ClientException] if content body cannot be decoded as JSON.
-  Future<dynamic> decodeJson(
-      {Object? Function(Object? key, Object? value)? reviver});
+  Future<dynamic> decodeJson({
+    Object? Function(Object? key, Object? value)? reviver,
+  });
 }
