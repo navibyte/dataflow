@@ -1,6 +1,7 @@
 ## 0.8.1
 
 - [Apply very_good_analysis 2.4.0+ lint rules #17](https://github.com/navibyte/dataflow/issues/17)
+- Documentation fixes
 
 ## 0.8.0
 

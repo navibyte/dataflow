@@ -23,6 +23,9 @@ Code           | Package | Description
 
 ## :newspaper_roll: News
 
+2022-03-10
+* Release version 0.8.1 (with small documentation fixes)
+
 2021-10-02
 * Release version 0.8.0.
 * Interfaces and class structures stabilized, no major breaking changes planned at least short-term.

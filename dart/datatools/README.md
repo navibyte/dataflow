@@ -9,8 +9,6 @@ Key features:
 * Fetch API binding to file resources (based on `dart:io`).
 * Metadata structures to handle links.
 
-**This package is at BETA stage, interfaces not fully final yet.** 
-
 ## Usage
 
 Please, see more detailed examples on 
@@ -141,22 +139,11 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  datatools: ^0.8.0 
+  datatools: ^0.8.1 
 ```
 
 All dependencies used by `datatools` are also ready for 
 [null-safety](https://dart.dev/null-safety)!
-
-## Package
-
-This is a [Dart](https://dart.dev/) code package named `datatools` under the 
-[dataflow](https://github.com/navibyte/dataflow) repository. 
-
-The package is associated with (but not depending on) the
-[geodata](https://pub.dev/packages/geodata) package. The `datatools` package 
-contains non-geospatial tools to fetch data from HTTP and file resources. The
-`geodata` package then provides client-side access for geospatial APIs and data
-sources. 
 
 ## Libraries
 

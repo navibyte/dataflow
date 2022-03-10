@@ -400,21 +400,11 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  attributes: ^0.8.0
+  attributes: ^0.8.1
 ```
 
 All dependencies used by `attributes` are also ready for 
 [null-safety](https://dart.dev/null-safety)!
-
-## Package
-
-This is a [Dart](https://dart.dev/) code package named `attributes` under the 
-[dataflow](https://github.com/navibyte/dataflow) repository. 
-
-The package is associated with (but not depending on) the
-[geocore](https://pub.dev/packages/geocore) package. The `attributes` package 
-contains non-geospatial data structures that are extended and utilized by the 
-`geocore` package to provide geospatial data structures and utilities. 
 
 ## Libraries
 
