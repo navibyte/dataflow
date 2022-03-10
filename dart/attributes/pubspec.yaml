@@ -3,7 +3,6 @@ description: Decode and encode structured data type-safely from JSON. Utilities 
 version: 0.8.1
 repository: https://github.com/navibyte/dataflow
 homepage: https://github.com/navibyte/dataflow/tree/main/dart/attributes
-publish_to: none
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
