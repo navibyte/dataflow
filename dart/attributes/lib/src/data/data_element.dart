@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2021 Navibyte (https://navibyte.com). All rights reserved.
+// Copyright (c) 2020-2022 Navibyte (https://navibyte.com). All rights reserved.
 // Use of this source code is governed by a “BSD-3-Clause”-style license that is
 // specified in the LICENSE file.
 //
@@ -33,7 +33,7 @@ abstract class DataElement<K> extends ValueAccessor<K> implements Counted {
 
   /// Returns a child data object at [key] or null if missing.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// represented as [DataObject].
   DataObject? tryObject(K key);
 
@@ -45,7 +45,7 @@ abstract class DataElement<K> extends ValueAccessor<K> implements Counted {
 
   /// Returns a child data array at [key] or null if missing.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// represented as [DataArray].
   DataArray? tryArray(K key);
 
