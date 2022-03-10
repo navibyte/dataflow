@@ -9,7 +9,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:datatools/fetch_api.dart';
 import 'package:datatools/fetch_file.dart';
 import 'package:datatools/fetch_http.dart';
 import 'package:datatools/meta_link.dart';

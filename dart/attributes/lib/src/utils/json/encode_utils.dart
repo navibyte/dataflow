@@ -4,7 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '../../data.dart';
+import '/src/data.dart';
 
 /// A helper utilility function used on `json.encode()`.
 ///

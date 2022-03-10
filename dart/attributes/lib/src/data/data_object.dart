@@ -10,9 +10,9 @@ import 'package:equatable/equatable.dart';
 
 import 'package:meta/meta.dart';
 
-import '../exceptions.dart';
-import '../utils/json.dart';
-import '../values.dart';
+import '/src/exceptions.dart';
+import '/src/utils/json.dart';
+import '/src/values.dart';
 
 import 'data_array.dart';
 import 'data_element.dart';

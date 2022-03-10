@@ -6,7 +6,7 @@
 
 import 'package:http/http.dart' as http;
 
-import '../../api/exceptions.dart';
+import '/src/api/exceptions.dart';
 
 /*
   /// A default constructor with [message] and an optional [reference].

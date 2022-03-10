@@ -8,8 +8,8 @@ import 'package:equatable/equatable.dart';
 
 import 'package:meta/meta.dart';
 
-import '../data.dart';
-import '../values.dart';
+import '/src/data.dart';
+import '/src/values.dart';
 
 import 'entity.dart';
 

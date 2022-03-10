@@ -69,7 +69,7 @@ abstract class PrimitiveAccessor<K> {
 
   /// Returns a value at [key] as `String` or null if missing.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to String.
   String? tryString(K key);
 
@@ -77,7 +77,7 @@ abstract class PrimitiveAccessor<K> {
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to int.
   int? tryInt(K key, {int? min, int? max});
 
@@ -85,7 +85,7 @@ abstract class PrimitiveAccessor<K> {
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to BigInt.
   BigInt? tryBigInt(K key, {BigInt? min, BigInt? max});
 
@@ -93,7 +93,7 @@ abstract class PrimitiveAccessor<K> {
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to double.
   double? tryDouble(K key, {double? min, double? max});
 
@@ -101,13 +101,13 @@ abstract class PrimitiveAccessor<K> {
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to num.
   num? tryNum(K key, {num? min, num? max});
 
   /// Returns a value at [key] as `bool` or null if missing.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to bool.
   bool? tryBool(K key);
 }

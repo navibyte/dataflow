@@ -6,9 +6,9 @@
 
 import 'package:http/http.dart' as http;
 
-import '../../api/address.dart';
-import '../../api/exceptions.dart';
-import '../../api/fetch.dart';
+import '/src/api/address.dart';
+import '/src/api/exceptions.dart';
+import '/src/api/fetch.dart';
 
 import 'http_adapter.dart';
 import 'http_content.dart';

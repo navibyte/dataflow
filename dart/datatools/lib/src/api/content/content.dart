@@ -4,7 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '../address.dart';
+import '/src/api/address.dart';
 
 import 'body.dart';
 import 'head.dart';

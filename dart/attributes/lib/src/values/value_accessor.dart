@@ -40,13 +40,13 @@ abstract class ValueAccessor<K> extends PrimitiveAccessor<K> {
   ///
   /// Use an optional [parse] function to define app specific conversion.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to DateTime.
   DateTime? tryTimeUTC(K key, {DateTime Function(Object?)? parse});
 
   /// Returns a value at [key] as [Identifier] or null if missing.
   ///
-  /// `null` is returned if an underlying value is unavailable or cannot be
+  /// `null` is returned if an underlying value is unavailable or cannot be
   /// converted to Identifier.
   Identifier? tryId(K key);
 }

@@ -4,9 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '../values.dart';
-
-import 'value_accessor.dart';
+import '/src/values.dart';
 
 /// A partial implementation of [ValueAccessor].
 mixin ValueAccessorMixin<K> implements ValueAccessor<K> {

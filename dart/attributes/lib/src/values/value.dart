@@ -35,7 +35,7 @@ abstract class Value extends Primitive {
   /// DateTime in the UTC time zone.
   DateTime asTimeUTC({DateTime Function(Object?)? parse});
 
-  /// This value as a `Identifier` value.
+  /// This value as a `Identifier` value.
   ///
   /// FormatException is thrown if an underlying value cannot be converted to
   /// Identifier.
@@ -46,6 +46,6 @@ abstract class Value extends Primitive {
   /// Use an optional [parse] function to define app specific conversion.
   DateTime? tryAsTimeUTC({DateTime Function(Object?)? parse});
 
-  /// This value as a `Identifier` value or null if cannot be converted.
+  /// This value as a `Identifier` value or null if cannot be converted.
   Identifier? tryAsId();
 }

@@ -173,8 +173,6 @@ Future<void> main() async {
       expect(dataView, dynView);
       expect(dataView, dataUnmod);
       expect(dynView, dynUnmod);
-      expect(_sampleDynamic is Map<String, Object?>, true);
-      expect(_sampleNonNull is Map<String, Object?>, true);
       expect(_sampleData is Map<String, Object>, false);
     });
 

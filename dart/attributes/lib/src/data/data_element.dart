@@ -4,8 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '../collection.dart';
-import '../values.dart';
+import '/src/collection.dart';
+import '/src/values.dart';
 
 import 'data_array.dart';
 import 'data_object.dart';
