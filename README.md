@@ -23,6 +23,9 @@ Code           | Package | Description
 
 ## :newspaper_roll: News
 
+2023-03-14
+* Release version 0.8.2 (maintenance fixes)
+
 2022-03-10
 * Release version 0.8.1 (with small documentation fixes)
 
