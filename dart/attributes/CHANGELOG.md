@@ -1,3 +1,10 @@
+## 0.8.2
+
+🛠 Maintenance:
+- The dependency on `intl` updated to 0.18.0+
+- The dependency on `very_good_analysis` updated to 4.0.0+ 
+- The SDK constraint updated from '>=2.12.0 <3.0.0' to '>=2.12.0 <4.0.0'.
+
 ## 0.8.1
 
 - [Apply very_good_analysis 2.4.0+ lint rules #17](https://github.com/navibyte/dataflow/issues/17)

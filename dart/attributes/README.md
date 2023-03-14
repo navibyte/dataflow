@@ -400,7 +400,7 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  attributes: ^0.8.1
+  attributes: ^0.8.2
 ```
 
 All dependencies used by `attributes` are also ready for 
