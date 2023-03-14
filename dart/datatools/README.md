@@ -139,7 +139,7 @@ In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  datatools: ^0.8.1 
+  datatools: ^0.8.2
 ```
 
 All dependencies used by `datatools` are also ready for 
