@@ -155,7 +155,7 @@ HttpContent _validate200OK(Uri reference, http.BaseResponse response) {
 }
 
 UriResolver _endpointResolver(List<Uri>? endpoints) {
-  var _endpointIndex = -1;
+  var endpointIndex = -1;
   return (reference) {
     if (reference.hasScheme && reference.hasAuthority) {
       if (!(reference.isScheme('https') || reference.isScheme('http'))) {
@@ -164,8 +164,8 @@ UriResolver _endpointResolver(List<Uri>? endpoints) {
       return reference;
     } else {
       if (endpoints != null) {
-        _endpointIndex = (_endpointIndex + 1) % endpoints.length;
-        return endpoints[_endpointIndex].resolveUri(reference);
+        endpointIndex = (endpointIndex + 1) % endpoints.length;
+        return endpoints[endpointIndex].resolveUri(reference);
       }
     }
     throw ClientException.uriNotAllowed(reference);

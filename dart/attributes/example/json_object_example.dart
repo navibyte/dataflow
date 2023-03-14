@@ -4,7 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_constructors_over_static_methods
 
 /*
 Same as "data_object_example.dart" but:
