@@ -1,3 +1,12 @@
+## 1.0.0
+
+NOTE: Version 1.0.0 currently under development.
+
+✨ New (2023-08): The version 1.0.0 requiring [Dart 3](https://dart.dev/resources/dart-3-migration). When Dart 2 is required, please use version 0.8.x.
+
+🛠 Maintenance:
+- The SDK constraint updated from '>=2.12.0 <4.0.0' to '>=3.0.0 <4.0.0'.
+
 ## 0.8.2
 
 🛠 Maintenance:

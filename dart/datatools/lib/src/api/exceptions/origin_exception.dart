@@ -36,8 +36,7 @@ enum OriginFailure {
 /// An exception containing a failure message as a response from an API origin.
 abstract class OriginException extends ApiException {
   /// A default constructor of [message] and an optional [reference].
-  const OriginException(String message, {Uri? reference})
-      : super(message, reference: reference);
+  const OriginException(super.message, {super.reference});
 
   /// Create an exception of [message], [failure] and [statusCode].
   ///
@@ -82,12 +81,12 @@ abstract class OriginException extends ApiException {
 
 class _OriginExceptionBase extends OriginException {
   const _OriginExceptionBase(
-    String message, {
-    Uri? reference,
+    super.message, {
+    super.reference,
     this.failure = OriginFailure.undefined,
     this.statusCode = 0,
     this.reasonPhrase,
-  }) : super(message, reference: reference);
+  });
 
   @override
   final OriginFailure failure;

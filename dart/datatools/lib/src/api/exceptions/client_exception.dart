@@ -9,8 +9,7 @@ import 'api_exception.dart';
 /// An exception occurred when accessing an API and caused by client-side code.
 class ClientException extends ApiException {
   /// Create an exception of [message], and optional [reference] and [cause].
-  const ClientException(String message, {Uri? reference, this.cause})
-      : super(message, reference: reference);
+  const ClientException(super.message, {super.reference, this.cause});
 
   /// An optional wrapped [cause] exception.
   final dynamic cause;
