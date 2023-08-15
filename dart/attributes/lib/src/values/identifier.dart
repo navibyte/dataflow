@@ -42,7 +42,7 @@ abstract interface class Identifier implements StringOrInteger {
   /// This is a factory creating a private instance implementing [Identifier].
   factory Identifier.fromBigInt(BigInt id) => _IdentifierBase(id);
 
-  /// Prepares a nullable [Identifier] instance of the given [id]
+  /// Prepares a nullable [Identifier] instance of the given [id].
   ///
   /// The [id] argument is allowed to be null or an instance of [Identifier],
   /// `String`, `int` or `BigInt`. In other cases an ArgumentError is thrown.

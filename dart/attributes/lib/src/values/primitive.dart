@@ -51,7 +51,7 @@ abstract interface class Primitive implements StringOrInteger {
   @override
   BigInt asBigInt({BigInt? min, BigInt? max});
 
-  /// This value as a `double` value.
+  /// This value as a `double` value.
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
@@ -59,7 +59,7 @@ abstract interface class Primitive implements StringOrInteger {
   /// double.
   double asDouble({double? min, double? max});
 
-  /// This value as a `num` value (either `double` or `int`).
+  /// This value as a `num` value (either `double` or `int`).
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   ///
@@ -67,7 +67,7 @@ abstract interface class Primitive implements StringOrInteger {
   /// num.
   num asNum({num? min, num? max});
 
-  /// This value as a `bool` value.
+  /// This value as a `bool` value.
   ///
   /// FormatException is thrown if an underlying value cannot be converted to
   /// bool.
@@ -88,16 +88,16 @@ abstract interface class Primitive implements StringOrInteger {
   @override
   BigInt? tryAsBigInt({BigInt? min, BigInt? max});
 
-  /// This value as a `double` or null if cannot be converted to `double`.
+  /// This value as a `double` or null if cannot be converted to `double`.
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   double? tryAsDouble({double? min, double? max});
 
-  /// This value as a `num` or null if cannot be converted to `num`.
+  /// This value as a `num` or null if cannot be converted to `num`.
   ///
   /// If provided [min] and [max] are used to clamp the returned value.
   num? tryAsNum({num? min, num? max});
 
-  /// This value as a `bool` or null if cannot be converted to `bool`.
+  /// This value as a `bool` or null if cannot be converted to `bool`.
   bool? tryAsBool();
 }
