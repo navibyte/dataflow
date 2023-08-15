@@ -10,11 +10,9 @@ import 'package:meta/meta.dart';
 
 import 'string_or_integer.dart';
 
-/// An identifier of something, represented as `String`, `int` or `BigInt`.
-abstract class Identifier implements StringOrInteger {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Identifier();
-
+/// An interface for an identifier of something, represented as `String`, `int`
+/// or `BigInt`.
+abstract interface class Identifier implements StringOrInteger {
   /// An identifier from [id] that MUST be either `String`, `int` or `BigInt`.
   ///
   /// Please note that for production runtimes the id is not validated even if
@@ -22,18 +20,26 @@ abstract class Identifier implements StringOrInteger {
   ///
   /// You may want to use `fromString`, `fromInt` or `fromBigInt` to ensure
   /// better type safety if id type is known statically.
+  /// 
+  /// This is a factory creating a private instance implementing [Identifier].
   factory Identifier.from(Object id) => _IdentifierBase(id);
 
   /// An identifier from [id] of the type `String`.
+  /// 
+  /// This is a factory creating a private instance implementing [Identifier].
   factory Identifier.fromString(String id) => _IdentifierBase(id);
 
   /// An identifier from [id] of the type `int`.
   ///
   /// On web enviroment (compiled with dart2js) `int` can store "all integers
   /// between -2^53 and 2^53, and some integers with larger magnitude".
+  /// 
+  /// This is a factory creating a private instance implementing [Identifier].
   factory Identifier.fromInt(int id) => _IdentifierBase(id);
 
   /// An identifier from [id] of the type `BigInt`.
+  /// 
+  /// This is a factory creating a private instance implementing [Identifier].
   factory Identifier.fromBigInt(BigInt id) => _IdentifierBase(id);
 
   /// Prepares a nullable [Identifier] instance of the given [id]
@@ -54,7 +60,7 @@ abstract class Identifier implements StringOrInteger {
 /// Private implementation of [Identifier].
 /// The implementation may change in future.
 @immutable
-class _IdentifierBase extends Identifier with EquatableMixin {
+class _IdentifierBase extends Equatable implements Identifier {
   const _IdentifierBase(this.storage)
       : assert(
           storage is String || storage is int || storage is BigInt,

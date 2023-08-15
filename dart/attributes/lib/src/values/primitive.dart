@@ -6,14 +6,12 @@
 
 import 'string_or_integer.dart';
 
-/// A primitive value with type and null safe accessors for data.
+/// A interface for a primitive value with type and null safe accessors for
+/// data.
 ///
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool` and `Null`.
-abstract class Primitive extends StringOrInteger {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Primitive();
-
+abstract interface class Primitive implements StringOrInteger {
   /// True if this value is stored as numeric (`int`, `BigInt`, `double`) value.
   ///
   /// Even if false is returned it might be possible to access value as number.

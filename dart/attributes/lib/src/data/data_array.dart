@@ -17,7 +17,8 @@ import '/src/values.dart';
 import 'data_element.dart';
 import 'data_object.dart';
 
-/// A data array with property values accessed by `int` keys (or indexes).
+/// An interface for a data array with property values accessed by `int` keys
+/// (or indexes).
 ///
 /// See samples below to create a copied data array, a view wrapping an
 /// instance of the standard `Iterable`, and decoding one from JSON.
@@ -30,18 +31,21 @@ import 'data_object.dart';
 ///
 /// final json = DataArray.decodeJson('["foo", "bar", 2, null]');
 /// ```
-abstract class DataArray extends DataElement<int> {
-  /// Default `const` constructor to allow extending this abstract class.
-  const DataArray();
-
+abstract interface class DataArray implements DataElement<int> {
   /// Creates a data array with items copied from [source].
+  /// 
+  /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.of([Iterable<Object?> source = const <Object>[]]) =>
       DataArrayView._ensureProtected(source);
 
   /// Creates a data array view backed by [source].
+  /// 
+  /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.view(Iterable<Object?> source) = DataArrayView._exposed;
 
   /// Creates a data array with items mapped from [source] list of [T].
+  /// 
+  /// This is a factory creating an instance of [DataArrayView].
   static DataArray from<T extends Object>(
     Iterable<T> source,
     Object Function(T) convert,
@@ -54,10 +58,14 @@ abstract class DataArray extends DataElement<int> {
   ///
   /// The underlying list is an object tree as parsed by the standard
   /// `json.decode()` of the `dart:convert` package.
+  /// 
+  /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.decodeJson(String source) =>
       DataArrayView._protected(json.decode(source) as Iterable<Object?>);
 
   /// Creates an empty data array.
+  /// 
+  /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.empty() => _empty;
 
   static final DataArray _empty = DataArrayView._protected(const <Object>[]);
@@ -73,8 +81,9 @@ abstract class DataArray extends DataElement<int> {
   Iterable<T?> toNullableValues<T extends Object>();
 }
 
-/// A [DataArray] implemention as a view of `Iterable<Object?>` source data.
-class DataArrayView<Obj extends DataObject, Arr extends DataArray>
+/// A base implemention of [DataArray] as a view of `Iterable<Object?>` source
+/// data.
+base class DataArrayView<Obj extends DataObject, Arr extends DataArray>
     with ValueAccessorMixin<int>, EquatableMixin
     implements DataArray {
   /// Creates a data array view wrapping a source [list].

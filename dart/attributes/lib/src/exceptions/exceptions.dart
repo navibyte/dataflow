@@ -5,28 +5,28 @@
 // Docs: https://github.com/navibyte/dataflow
 
 /// A [FormatException] notifying about an undefined or missing value.
-class UndefinedValueException extends FormatException {
+base class UndefinedValueException extends FormatException {
   /// Create an exception of an optional [message].
   const UndefinedValueException({String? message})
       : super(message ?? 'Value is undefined or missing.');
 }
 
 /// A [FormatException] notifying about a null value.
-class NullValueException extends FormatException {
+base class NullValueException extends FormatException {
   /// Create an exception of an optional [message].
   const NullValueException({String? message})
       : super(message ?? 'Value is null.');
 }
 
 /// A [FormatException] notifying about an invalid value
-class InvalidValueException extends FormatException {
+base class InvalidValueException extends FormatException {
   /// Create an exception of a reference to [data] and an optional [message].
   const InvalidValueException(Object? data, {String? message})
       : super(message ?? 'Invalid value.', data);
 }
 
 /// A [FormatException] notifying about an unsupported conversion.
-class ConversionException extends FormatException {
+base class ConversionException extends FormatException {
   /// Create an exception of a reference to [data] and a [target] type.
   ///
   /// Optionally [message] can be given too.

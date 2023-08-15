@@ -13,10 +13,7 @@ import 'primitive_accessor.dart';
 ///
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool`, `DateTime`, `Identifier` and `Null`.
-abstract class ValueAccessor<K> extends PrimitiveAccessor<K> {
-  /// Default `const` constructor to allow extending this abstract class.
-  const ValueAccessor();
-
+abstract interface class ValueAccessor<K> implements PrimitiveAccessor<K> {
   /// Returns a value at [key], the result can be of any object or null.
   ///
   /// FormatException is thrown if an underlying value is unavailable.

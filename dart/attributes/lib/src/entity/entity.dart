@@ -9,12 +9,12 @@ import '/src/values.dart';
 
 import 'entity_base.dart';
 
-/// An entity with an optional [id] and required [properties] as a data object.
-abstract class Entity {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Entity();
-
+/// An interface for an entity with an optional [id] and required [properties]
+/// (as a data object).
+abstract interface class Entity {
   /// A new entity of an optional [id] and required [properties].
+  /// 
+  /// This is a factory creating an instance of [EntityBase].
   factory Entity.of({Identifier? id, required DataObject properties}) =>
       EntityBase(
         id: id,
@@ -28,6 +28,8 @@ abstract class Entity {
   ///
   /// The [properties] is used as a source view for an entity. Any changes on
   /// source reflect also on entity properties.
+  /// 
+  /// This is a factory creating an instance of [EntityBase].
   factory Entity.view({Object? id, required Map<String, Object?> properties}) =>
       EntityBase(
         id: Identifier.idOrNull(id),
@@ -35,6 +37,8 @@ abstract class Entity {
       );
 
   /// An empty entity with empty properties and without id.
+  /// 
+  /// This is a factory creating an instance of [EntityBase].
   factory Entity.empty() => EntityBase(properties: DataObject.empty());
 
   /// An optional [id] for this entity.

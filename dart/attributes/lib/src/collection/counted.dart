@@ -5,10 +5,7 @@
 // Docs: https://github.com/navibyte/dataflow
 
 /// An interface for a collection with countable items.
-abstract class Counted {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Counted();
-
+abstract interface class Counted {
   /// Returns the number of elements in this collection.
   ///
   /// If not applicable or not known then 0 should be returned.

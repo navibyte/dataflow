@@ -6,8 +6,8 @@
 
 import '/src/values.dart';
 
-/// A partial implementation of [ValueAccessor].
-mixin ValueAccessorMixin<K> implements ValueAccessor<K> {
+/// A base mixin with a partial implementation of [ValueAccessor].
+base mixin ValueAccessorMixin<K> implements ValueAccessor<K> {
   @override
   bool existsNull(K key) => exists(key) && this[key] == null;
 

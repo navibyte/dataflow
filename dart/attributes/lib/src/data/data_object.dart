@@ -17,7 +17,8 @@ import '/src/values.dart';
 import 'data_array.dart';
 import 'data_element.dart';
 
-/// A data object with property values accessed by `String` keys.
+/// An interface for a data object with property values accessed by `String`
+/// keys.
 ///
 /// See samples below to create a copied data object, a view wrapping an
 /// instance of the standard `Map`, and decoding one from JSON.
@@ -30,19 +31,20 @@ import 'data_element.dart';
 ///
 /// final json = DataObject.decodeJson('{"foo": 1, "bar": "two"}');
 /// ```
-abstract class DataObject extends DataElement<String> {
-  /// Default `const` constructor to allow extending this abstract class.
-  const DataObject();
-
+abstract interface class DataObject implements DataElement<String> {
   /// Creates a data object with items copied from [source].
   factory DataObject.of([Map<String, Object?> source = const {}]) =>
       DataObjectView<DataObject, DataArray>._ensureProtected(source);
 
   /// Creates a data object view backed by [source].
+  /// 
+  /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.view(Map<String, Object?> source) =
       DataObjectView<DataObject, DataArray>._exposed;
 
   /// Creates a data object with items mapped from [source] of [K] - [V] pairs.
+  /// 
+  /// This is a factory creating an instance of [DataObjectView].
   static DataObject from<K extends Object, V extends Object>(
     Map<K, V> source,
     MapEntry<String, Object> Function(K, V) convert,
@@ -53,12 +55,16 @@ abstract class DataObject extends DataElement<String> {
   ///
   /// The underlying map is an object tree as parsed by the standard
   /// `json.decode()` of the `dart:convert` package.
+  /// 
+  /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.decodeJson(String source) =>
       DataObjectView<DataObject, DataArray>._protected(
         json.decode(source) as Map<String, Object?>,
       );
 
   /// Creates an empty data object.
+  /// 
+  /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.empty() => _empty;
 
   static final _empty =
@@ -78,8 +84,9 @@ abstract class DataObject extends DataElement<String> {
   Map<String, T?> toNullableValueMap<T extends Object>();
 }
 
-/// A [DataObject] implemention as a view of `Map<String, Object?>` source data.
-class DataObjectView<Obj extends DataObject, Arr extends DataArray>
+/// A base implemention of [DataObject] as a view of `Map<String, Object?>`
+/// source data.
+base class DataObjectView<Obj extends DataObject, Arr extends DataArray>
     with ValueAccessorMixin<String>, EquatableMixin
     implements DataObject {
   /// Creates a data object view wrapping a source [map].

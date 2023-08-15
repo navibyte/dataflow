@@ -11,10 +11,7 @@
 /// (compiled with dart2js) it supports "all integers between -2^53 and 2^53,
 /// and some integers with larger magnitude". So for this reason also `BigInt`
 /// might be needed for storing integers out of that range.
-abstract class StringOrInteger {
-  /// Default `const` constructor to allow extending this abstract class.
-  const StringOrInteger();
-
+abstract interface class StringOrInteger {
   /// True if this value is stored as a `String`.
   ///
   /// Even if false is returned it might be possible to access value as String.

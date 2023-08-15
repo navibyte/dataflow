@@ -15,7 +15,7 @@ import 'entity.dart';
 
 /// An immutable base implementation of [Entity].
 @immutable
-class EntityBase extends Entity with EquatableMixin {
+base class EntityBase extends Equatable implements Entity {
   /// A new entity of optional [id] and required [properties].
   ///
   /// The [properties] is required, but allowed to be empty.

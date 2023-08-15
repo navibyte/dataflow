@@ -10,15 +10,13 @@ import '/src/values.dart';
 import 'data_array.dart';
 import 'data_object.dart';
 
-/// A data element as a collection with accessors for typed values.
+/// An interface for a data element that is a collection with accessors for
+/// typed values.
 ///
 /// May aggregate other collections - data objects and arrays - too as values.
 ///
 /// Normally [K] is either String or int, but could be other types also.
-abstract class DataElement<K> extends ValueAccessor<K> implements Counted {
-  /// Default `const` constructor to allow extending this abstract class.
-  const DataElement();
-
+abstract interface class DataElement<K> implements ValueAccessor<K>, Counted {
   /// Encodes this element into a JSON string.
   ///
   /// Any `DateTime` objects contained are encoded using [encodeTime] if

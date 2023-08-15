@@ -7,14 +7,12 @@
 import 'identifier.dart';
 import 'primitive.dart';
 
-/// A value with type and null safe accessors for data extending [Primitive].
+/// An interface for a value with type and null safe accessors for data
+/// implementing [Primitive].
 ///
 /// Implementations should support accessing at least following types: `String`,
 /// `int`, `BigInt`, `double`, `bool`, `DateTime`, `Identifier` and `Null`.
-abstract class Value extends Primitive {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Value();
-
+abstract interface class Value implements Primitive {
   /// True if this value is stored as a `DateTime`.
   ///
   /// Even if false is returned it might be possible to access value as
