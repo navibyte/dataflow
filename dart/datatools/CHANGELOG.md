@@ -8,6 +8,7 @@ NOTE: Version 1.0.0 currently under development.
 - The SDK constraint updated from '>=2.12.0 <4.0.0' to '>=3.0.0 <4.0.0'.
 - Update copyright texts.
 - Remove trunk files.
+- Remove deprecated methods (`Content.stream`).
 
 ## 0.8.2
 

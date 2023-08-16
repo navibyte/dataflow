@@ -89,7 +89,4 @@ class FileContent extends Content {
       throw ClientException.decodingJsonFailed(e);
     }
   }
-
-  @override
-  Future<Stream<List<int>>> get stream async => byteStream();
 }

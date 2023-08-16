@@ -13,10 +13,4 @@ import 'head.dart';
 abstract class Content extends Head implements Anchor, Body {
   /// Default `const` constructor to allow extending this abstract class.
   const Content();
-
-  /// Returns a future for a single-subscription stream with content data.
-  ///
-  /// This is deprecated, may be removed in future.
-  @Deprecated('Use byteStream accessor instead.')
-  Future<Stream<List<int>>> get stream;
 }
