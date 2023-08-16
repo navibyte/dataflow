@@ -16,6 +16,11 @@ import 'data_object.dart';
 /// May aggregate other collections - data objects and arrays - too as values.
 ///
 /// Normally [K] is either String or int, but could be other types also.
+///
+/// As this class is defined with the class modifier `interface`, the class can
+/// only be implemented, but not extended. This class also do not provide any
+/// base implementations, but the known two subtypes are [DataArray] and
+/// [DataObject].
 abstract interface class DataElement<K> implements ValueAccessor<K>, Counted {
   /// Encodes this element into a JSON string.
   ///

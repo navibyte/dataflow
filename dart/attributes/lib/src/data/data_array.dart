@@ -31,20 +31,25 @@ import 'data_object.dart';
 ///
 /// final json = DataArray.decodeJson('["foo", "bar", 2, null]');
 /// ```
+///
+/// As this class is defined with the class modifier `interface`, the class can
+/// only be implemented, but not extended. This class also provides factory
+/// methods constructing instances of the default implementation provided by
+/// [DataArrayView].
 abstract interface class DataArray implements DataElement<int> {
   /// Creates a data array with items copied from [source].
-  /// 
+  ///
   /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.of([Iterable<Object?> source = const <Object>[]]) =>
       DataArrayView._ensureProtected(source);
 
   /// Creates a data array view backed by [source].
-  /// 
+  ///
   /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.view(Iterable<Object?> source) = DataArrayView._exposed;
 
   /// Creates a data array with items mapped from [source] list of [T].
-  /// 
+  ///
   /// This is a factory creating an instance of [DataArrayView].
   static DataArray from<T extends Object>(
     Iterable<T> source,
@@ -58,13 +63,13 @@ abstract interface class DataArray implements DataElement<int> {
   ///
   /// The underlying list is an object tree as parsed by the standard
   /// `json.decode()` of the `dart:convert` package.
-  /// 
+  ///
   /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.decodeJson(String source) =>
       DataArrayView._protected(json.decode(source) as Iterable<Object?>);
 
   /// Creates an empty data array.
-  /// 
+  ///
   /// This is a factory creating an instance of [DataArrayView].
   factory DataArray.empty() => _empty;
 
@@ -83,6 +88,10 @@ abstract interface class DataArray implements DataElement<int> {
 
 /// A base implemention of [DataArray] as a view of `Iterable<Object?>` source
 /// data.
+///
+/// As this class is defined with the class modifier `base`, the class can
+/// only be extended, but not implemented. When a subtype should be defined with
+/// `implements`, then such a subtype should implement `DataArray`.
 base class DataArrayView<Obj extends DataObject, Arr extends DataArray>
     with ValueAccessorMixin<int>, EquatableMixin
     implements DataArray {

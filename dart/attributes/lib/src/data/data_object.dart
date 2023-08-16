@@ -31,19 +31,24 @@ import 'data_element.dart';
 ///
 /// final json = DataObject.decodeJson('{"foo": 1, "bar": "two"}');
 /// ```
+///
+/// As this class is defined with the class modifier `interface`, the class can
+/// only be implemented, but not extended. This class also provides factory
+/// methods constructing instances of the default implementation provided by
+/// [DataObjectView].
 abstract interface class DataObject implements DataElement<String> {
   /// Creates a data object with items copied from [source].
   factory DataObject.of([Map<String, Object?> source = const {}]) =>
       DataObjectView<DataObject, DataArray>._ensureProtected(source);
 
   /// Creates a data object view backed by [source].
-  /// 
+  ///
   /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.view(Map<String, Object?> source) =
       DataObjectView<DataObject, DataArray>._exposed;
 
   /// Creates a data object with items mapped from [source] of [K] - [V] pairs.
-  /// 
+  ///
   /// This is a factory creating an instance of [DataObjectView].
   static DataObject from<K extends Object, V extends Object>(
     Map<K, V> source,
@@ -55,7 +60,7 @@ abstract interface class DataObject implements DataElement<String> {
   ///
   /// The underlying map is an object tree as parsed by the standard
   /// `json.decode()` of the `dart:convert` package.
-  /// 
+  ///
   /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.decodeJson(String source) =>
       DataObjectView<DataObject, DataArray>._protected(
@@ -63,7 +68,7 @@ abstract interface class DataObject implements DataElement<String> {
       );
 
   /// Creates an empty data object.
-  /// 
+  ///
   /// This is a factory creating an instance of [DataObjectView].
   factory DataObject.empty() => _empty;
 
@@ -86,6 +91,10 @@ abstract interface class DataObject implements DataElement<String> {
 
 /// A base implemention of [DataObject] as a view of `Map<String, Object?>`
 /// source data.
+///
+/// As this class is defined with the class modifier `base`, the class can
+/// only be extended, but not implemented. When a subtype should be defined with
+/// `implements`, then such a subtype should implement `DataObject`.
 base class DataObjectView<Obj extends DataObject, Arr extends DataArray>
     with ValueAccessorMixin<String>, EquatableMixin
     implements DataObject {
