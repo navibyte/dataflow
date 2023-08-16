@@ -16,7 +16,7 @@ import '/src/api/content/head.dart';
 import '/src/api/exceptions/client_exception.dart';
 
 /// HTTP content providing body and stream access for a HTTP response data.
-class HttpContent extends Content {
+base class HttpContent extends Content {
   /// Create a file content of [reference] and [response].
   HttpContent(this.reference, this.response, {Encoding fallback = latin1})
       : _fallback = fallback;

@@ -15,7 +15,7 @@ import '/src/api/content/head.dart';
 import '/src/api/exceptions/client_exception.dart';
 
 /// File content providing body and stream access for a file resource.
-class FileContent extends Content {
+base class FileContent extends Content {
   /// Create a file content of [reference] and [file].
   FileContent(
     this.reference,

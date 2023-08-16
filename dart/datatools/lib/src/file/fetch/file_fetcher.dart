@@ -21,7 +21,9 @@ import 'file_content.dart';
 ///
 /// This fetcher requires that references used on fetch methods are relative
 /// paths.
-class FileFetcher extends Fetcher<FileContent> with FetchMixin<FileContent> {
+interface class FileFetcher
+    with FetchMixin<FileContent>
+    implements Fetcher<FileContent> {
   /// Create a file fetcher with base [path], normally refering to a directory.
   ///
   /// Optionally charset [encoding] or [contentType] can be set to specify those

@@ -12,7 +12,7 @@ import 'package:meta/meta.dart';
 ///
 /// Compatible with: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/link.yaml
 @immutable
-class Link with EquatableMixin {
+base class Link with EquatableMixin {
   /// Link with [href]. Optional: [rel], [type], [hreflang], [title], [length].
   const Link({
     required this.href,

@@ -9,10 +9,7 @@ import 'dart:typed_data';
 import '/src/api/exceptions/client_exception.dart';
 
 /// An interface for accessing content body as String, bytes or JSON objects.
-abstract class Body {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Body();
-
+abstract interface class Body {
   /// Reads content body as text and returns a future of String.
   Future<String> get text;
 

@@ -154,7 +154,7 @@ abstract class Links {
 /// Private implementation of [Links].
 /// The implementation may change in future.
 @immutable
-class _Links extends Links with EquatableMixin {
+base class _Links extends Links with EquatableMixin {
   const _Links(this.all);
 
   _Links.empty() : all = const Iterable.empty();

@@ -4,11 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-/// An anchor for a resource.
-abstract class Anchor {
-  /// Default `const` constructor to allow extending this abstract class.
-  const Anchor();
-
+/// An interface for a resource anchor.
+abstract interface class Anchor {
   /// The URI [reference] to a resource this anchor is referring.
   Uri get reference;
 }

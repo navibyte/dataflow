@@ -8,20 +8,8 @@ import 'package:http/http.dart' as http;
 
 import '/src/api/exceptions/origin_exception.dart';
 
-/*
-  /// A default constructor with [message] and an optional [reference].
-  const OriginException(String message, {Uri? reference})
-      : super(message, reference: reference);
-
-  /// Create an exception with [message], [failure] and [statusCode].
-  /// 
-  /// Optionally also [reference] and [reasonPhrase] can be given.
-  /// 
-  /// The default for [failure] is `undefined` and for [statusCode] is `0`. 
-*/
-
 /// An exception originating from a HTTP response with non-success status code.
-class HttpException extends OriginException {
+base class HttpException extends OriginException {
   /// Create an exception of [reference] and [response].
   ///
   /// An optional [message] can be given, or it's resolved from [reference] and

@@ -17,7 +17,9 @@ import 'http_exception.dart';
 import 'http_validator.dart';
 
 /// A [Fetcher] implementation for accessing HTTP or HTTPS resources.
-class HttpFetcher extends Fetcher<HttpContent> with FetchMixin<HttpContent> {
+interface class HttpFetcher
+    with FetchMixin<HttpContent>
+    implements Fetcher<HttpContent> {
   /// A HTTP fetcher using optional [endpoints].
   ///
   /// For each request on a server the proxy creates a new `http.Client`
@@ -32,7 +34,7 @@ class HttpFetcher extends Fetcher<HttpContent> with FetchMixin<HttpContent> {
     HttpValidator validator = _validate200OK,
   }) =>
       HttpFetcher._(
-        HttpAdapter.simple(),
+        const HttpAdapter.simple(),
         null,
         _endpointResolver(endpoints),
         validator,

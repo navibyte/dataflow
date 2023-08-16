@@ -34,7 +34,7 @@ enum OriginFailure {
 }
 
 /// An exception containing a failure message as a response from an API origin.
-abstract class OriginException extends ApiException {
+abstract base class OriginException extends ApiException {
   /// A default constructor of [message] and an optional [reference].
   const OriginException(super.message, {super.reference});
 
@@ -79,7 +79,7 @@ abstract class OriginException extends ApiException {
   bool get isNotAcceptable => failure == OriginFailure.notAcceptable;
 }
 
-class _OriginExceptionBase extends OriginException {
+base class _OriginExceptionBase extends OriginException {
   const _OriginExceptionBase(
     super.message, {
     super.reference,
