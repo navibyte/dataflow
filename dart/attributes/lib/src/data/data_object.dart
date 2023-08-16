@@ -11,7 +11,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '/src/exceptions.dart';
-import '/src/utils/json.dart';
+import '/src/utils/json/encode_utils.dart';
 import '/src/values.dart';
 
 import 'data_array.dart';
