@@ -9,7 +9,12 @@
 /// Usage: import `package:datatools/base_api.dart`
 library base_api;
 
-export 'src/api/address.dart';
-export 'src/api/content.dart';
-export 'src/api/control.dart';
-export 'src/api/exceptions.dart';
+export 'src/api/address/anchor.dart';
+export 'src/api/address/uri_resolver.dart';
+export 'src/api/content/body.dart';
+export 'src/api/content/content.dart';
+export 'src/api/content/head.dart';
+export 'src/api/control/controlled.dart';
+export 'src/api/exceptions/api_exception.dart';
+export 'src/api/exceptions/client_exception.dart';
+export 'src/api/exceptions/origin_exception.dart';

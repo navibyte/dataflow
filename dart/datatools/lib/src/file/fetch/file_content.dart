@@ -10,8 +10,9 @@ import 'dart:typed_data';
 
 import 'package:http_parser/http_parser.dart' show MediaType;
 
-import '/src/api/content.dart';
-import '/src/api/exceptions.dart';
+import '/src/api/content/content.dart';
+import '/src/api/content/head.dart';
+import '/src/api/exceptions/client_exception.dart';
 
 /// File content providing body and stream access for a file resource.
 class FileContent extends Content {

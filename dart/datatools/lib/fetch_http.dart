@@ -11,11 +11,15 @@ library fetch_http;
 
 import 'dart:typed_data';
 
-import 'src/api/content.dart';
-import 'src/http/fetch.dart';
+import 'src/api/content/content.dart';
+import 'src/http/fetch/http_fetcher.dart';
 
 export 'fetch_api.dart';
-export 'src/http/fetch.dart';
+export 'src/http/fetch/http_adapter.dart';
+export 'src/http/fetch/http_content.dart';
+export 'src/http/fetch/http_exception.dart';
+export 'src/http/fetch/http_fetcher.dart';
+export 'src/http/fetch/http_validator.dart';
 
 /// Fetch (read fully) content body from a HTTP(S) resource identified by [url].
 ///

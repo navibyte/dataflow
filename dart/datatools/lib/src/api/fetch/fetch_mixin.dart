@@ -6,7 +6,7 @@
 
 import 'dart:typed_data';
 
-import '/src/api/content.dart';
+import '/src/api/content/content.dart';
 
 import 'fetch_api.dart';
 

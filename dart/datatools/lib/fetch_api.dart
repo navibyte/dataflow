@@ -10,4 +10,6 @@
 library fetch_api;
 
 export 'base_api.dart';
-export 'src/api/fetch.dart';
+export 'src/api/fetch/fetch_api.dart';
+export 'src/api/fetch/fetch_mixin.dart';
+export 'src/api/fetch/fetcher.dart';

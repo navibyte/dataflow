@@ -6,7 +6,7 @@
 
 import 'dart:typed_data';
 
-import '/src/api/content.dart';
+import '/src/api/content/content.dart';
 
 /// An interface to fetch data from a resource like Web API, a cache or a file.
 abstract class FetchApi<C extends Content> {

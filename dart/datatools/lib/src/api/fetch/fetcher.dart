@@ -4,8 +4,8 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '/src/api/content.dart';
-import '/src/api/control.dart';
+import '/src/api/content/content.dart';
+import '/src/api/control/controlled.dart';
 
 import 'fetch_api.dart';
 

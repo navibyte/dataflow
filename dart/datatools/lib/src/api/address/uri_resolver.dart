@@ -4,7 +4,7 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import '/src/api/exceptions.dart';
+import '/src/api/exceptions/client_exception.dart';
 
 /// A function to resolve an absolute URI from an URI [reference].
 ///

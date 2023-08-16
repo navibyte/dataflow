@@ -9,4 +9,5 @@
 /// Usage: import `package:datatools/meta_link.dart`
 library link;
 
-export 'src/meta/link.dart';
+export 'src/meta/link/link.dart';
+export 'src/meta/link/links.dart';

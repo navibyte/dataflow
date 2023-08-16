@@ -10,8 +10,10 @@ import 'dart:io' show File;
 
 import 'package:path/path.dart' as p;
 
-import '/src/api/exceptions.dart';
-import '/src/api/fetch.dart';
+import '/src/api/exceptions/client_exception.dart';
+import '/src/api/exceptions/origin_exception.dart';
+import '/src/api/fetch/fetch_mixin.dart';
+import '/src/api/fetch/fetcher.dart';
 
 import 'file_content.dart';
 

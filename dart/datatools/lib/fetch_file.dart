@@ -13,4 +13,5 @@
 library fetch_file;
 
 export 'fetch_api.dart';
-export 'src/file/fetch.dart';
+export 'src/file/fetch/file_content.dart';
+export 'src/file/fetch/file_fetcher.dart';

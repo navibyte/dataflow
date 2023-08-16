@@ -6,7 +6,7 @@
 
 import 'dart:typed_data';
 
-import '/src/api/exceptions.dart' show ClientException;
+import '/src/api/exceptions/client_exception.dart';
 
 /// An interface for accessing content body as String, bytes or JSON objects.
 abstract class Body {
