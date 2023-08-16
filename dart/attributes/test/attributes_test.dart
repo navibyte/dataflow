@@ -13,13 +13,52 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   group('Test Identifier', () {
-    test('DataArray views', () {
+    test('Equality', () {
       expect(Identifier.from('id123'), Identifier.fromString('id123'));
       expect(Identifier.from('id123'), isNot(Identifier.fromString('id124')));
       expect(Identifier.from(123), Identifier.fromInt(123));
       expect(Identifier.from('123'), isNot(Identifier.fromInt(123)));
       expect(Identifier.from(BigInt.from(123)), isNot(Identifier.fromInt(123)));
       expect(Identifier.from(BigInt.two), Identifier.fromBigInt(BigInt.two));
+    });
+  });
+
+  group('Test Entity', () {
+    test('Equality', () {
+      expect(
+        Entity.view(
+          id: 123,
+          properties: {'some': 100, 'other': 'text'},
+        ),
+        EntityBase(
+          id: Identifier.from(123),
+          properties: DataObject.view({'some': 100, 'other': 'text'}),
+        ),
+      );
+      expect(
+        Entity.view(
+          id: 123,
+          properties: {'some': 100, 'other': 'text'},
+        ),
+        isNot(
+          EntityBase(
+            id: Identifier.from(123),
+            properties: DataObject.view({'some': 101, 'other': 'text'}),
+          ),
+        ),
+      );
+      expect(
+        Entity.view(
+          id: 123,
+          properties: {'some': 100, 'other': 'text'},
+        ),
+        isNot(
+          EntityBase(
+            id: Identifier.from(124),
+            properties: DataObject.view({'some': 100, 'other': 'text'}),
+          ),
+        ),
+      );
     });
   });
 

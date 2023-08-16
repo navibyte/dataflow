@@ -11,15 +11,17 @@ import 'entity_base.dart';
 
 /// An interface for an entity with an optional [id] and required [properties]
 /// (as a data object).
+///
+/// As this class is defined with the class modifier `interface`, the class can
+/// only be implemented, but not extended. This class also provides factory
+/// methods constructing instances of the default implementation provided by
+/// [EntityBase].
 abstract interface class Entity {
   /// A new entity of an optional [id] and required [properties].
-  /// 
+  ///
   /// This is a factory creating an instance of [EntityBase].
-  factory Entity.of({Identifier? id, required DataObject properties}) =>
-      EntityBase(
-        id: id,
-        properties: properties,
-      );
+  factory Entity.of({Identifier? id, required DataObject properties}) =
+      EntityBase;
 
   /// A new entity of optional [id] and required source [properties].
   ///
@@ -28,18 +30,15 @@ abstract interface class Entity {
   ///
   /// The [properties] is used as a source view for an entity. Any changes on
   /// source reflect also on entity properties.
-  /// 
+  ///
   /// This is a factory creating an instance of [EntityBase].
-  factory Entity.view({Object? id, required Map<String, Object?> properties}) =>
-      EntityBase(
-        id: Identifier.idOrNull(id),
-        properties: DataObject.view(properties),
-      );
+  factory Entity.view({Object? id, required Map<String, Object?> properties}) =
+      EntityBase.view;
 
   /// An empty entity with empty properties and without id.
-  /// 
+  ///
   /// This is a factory creating an instance of [EntityBase].
-  factory Entity.empty() => EntityBase(properties: DataObject.empty());
+  factory Entity.empty() = EntityBase.empty;
 
   /// An optional [id] for this entity.
   Identifier? get id;
