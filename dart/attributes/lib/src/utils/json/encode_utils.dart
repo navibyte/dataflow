@@ -4,11 +4,14 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+import 'package:meta/meta.dart';
+
 import '/src/data.dart';
 
 /// A helper utilility function used on `json.encode()`.
 ///
 /// Not to be exported. Implementation may change in future.
+@internal
 Object? encodeJsonObject(
   dynamic object, {
   Object Function(DateTime time)? encodeTime,
