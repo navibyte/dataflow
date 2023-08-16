@@ -9,6 +9,9 @@ NOTE: Version 1.0.0 currently under development.
 
 🛠 Maintenance:
 - The SDK constraint updated from '>=2.12.0 <4.0.0' to '>=3.0.0 <4.0.0'.
+- Mark utility methods with @internal.
+- Remove trunk file for utils.
+- Update copyright texts.
 
 ## 0.8.2
 
