@@ -5,12 +5,24 @@
 // Docs: https://github.com/navibyte/dataflow
 
 // ignore_for_file: unnecessary_lambdas, avoid_catches_without_on_clauses
+// ignore_for_file: prefer_const_constructors
 
 import 'package:attributes/attributes.dart';
 
 import 'package:test/test.dart';
 
 Future<void> main() async {
+  group('Test Identifier', () {
+    test('DataArray views', () {
+      expect(Identifier.from('id123'), Identifier.fromString('id123'));
+      expect(Identifier.from('id123'), isNot(Identifier.fromString('id124')));
+      expect(Identifier.from(123), Identifier.fromInt(123));
+      expect(Identifier.from('123'), isNot(Identifier.fromInt(123)));
+      expect(Identifier.from(BigInt.from(123)), isNot(Identifier.fromInt(123)));
+      expect(Identifier.from(BigInt.two), Identifier.fromBigInt(BigInt.two));
+    });
+  });
+
   group('Test DataArray', () {
     test('DataArray views', () {
       final source = [1, 2, 3];

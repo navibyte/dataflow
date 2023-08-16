@@ -4,15 +4,27 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
-import 'package:equatable/equatable.dart';
-
 import 'package:meta/meta.dart';
 
 import 'string_or_integer.dart';
 
 /// An interface for an identifier of something, represented as `String`, `int`
 /// or `BigInt`.
-abstract interface class Identifier implements StringOrInteger {
+///
+/// As this class is defined with the class modifier `interface`, the class can
+/// only be implemented, but not extended. This class also provides a default
+/// implementation that allows constructing instaces of [Identifier].
+@immutable
+interface class Identifier implements StringOrInteger {
+  /// The stored id as a `String`, `int` or `BigInt` value.
+  final Object _storage;
+
+  const Identifier._(this._storage)
+      : assert(
+          _storage is String || _storage is int || _storage is BigInt,
+          'Wrong type for an identifier.',
+        );
+
   /// An identifier from [id] that MUST be either `String`, `int` or `BigInt`.
   ///
   /// Please note that for production runtimes the id is not validated even if
@@ -20,27 +32,31 @@ abstract interface class Identifier implements StringOrInteger {
   ///
   /// You may want to use `fromString`, `fromInt` or `fromBigInt` to ensure
   /// better type safety if id type is known statically.
-  /// 
-  /// This is a factory creating a private instance implementing [Identifier].
-  factory Identifier.from(Object id) => _IdentifierBase(id);
+  ///
+  /// This constructor creates an instance of the default implementation of
+  /// [Identifier].
+  const Identifier.from(Object id) : this._(id);
 
   /// An identifier from [id] of the type `String`.
-  /// 
-  /// This is a factory creating a private instance implementing [Identifier].
-  factory Identifier.fromString(String id) => _IdentifierBase(id);
+  ///
+  /// This constructor creates an instance of the default implementation of
+  /// [Identifier].
+  const Identifier.fromString(String id) : this._(id);
 
   /// An identifier from [id] of the type `int`.
   ///
   /// On web enviroment (compiled with dart2js) `int` can store "all integers
   /// between -2^53 and 2^53, and some integers with larger magnitude".
-  /// 
-  /// This is a factory creating a private instance implementing [Identifier].
-  factory Identifier.fromInt(int id) => _IdentifierBase(id);
+  ///
+  /// This constructor creates an instance of the default implementation of
+  /// [Identifier].
+  const Identifier.fromInt(int id) : this._(id);
 
   /// An identifier from [id] of the type `BigInt`.
-  /// 
-  /// This is a factory creating a private instance implementing [Identifier].
-  factory Identifier.fromBigInt(BigInt id) => _IdentifierBase(id);
+  ///
+  /// This constructor creates an instance of the default implementation of
+  /// [Identifier].
+  const Identifier.fromBigInt(BigInt id) : this._(id);
 
   /// Prepares a nullable [Identifier] instance of the given [id].
   ///
@@ -55,39 +71,25 @@ abstract interface class Identifier implements StringOrInteger {
       return Identifier.from(id);
     }
   }
-}
-
-/// Private implementation of [Identifier].
-/// The implementation may change in future.
-@immutable
-class _IdentifierBase extends Equatable implements Identifier {
-  const _IdentifierBase(this.storage)
-      : assert(
-          storage is String || storage is int || storage is BigInt,
-          'Wrong type for an identifier.',
-        );
-
-  /// The stored id as a `String`, `int` or `BigInt` value.
-  final Object storage;
 
   @override
-  bool get isString => storage is String;
+  bool get isString => _storage is String;
 
   @override
-  bool get isInteger => storage is BigInt || storage is int;
+  bool get isInteger => _storage is BigInt || _storage is int;
 
   @override
-  bool get isInt => storage is int;
+  bool get isInt => _storage is int;
 
   @override
-  bool get isBigInt => storage is BigInt;
+  bool get isBigInt => _storage is BigInt;
 
   @override
-  String asString() => storage.toString();
+  String asString() => _storage.toString();
 
   @override
   int asInt() {
-    final id = storage;
+    final id = _storage;
     if (id is int) {
       return id;
     } else if (id is BigInt) {
@@ -103,7 +105,7 @@ class _IdentifierBase extends Equatable implements Identifier {
 
   @override
   BigInt asBigInt() {
-    final id = storage;
+    final id = _storage;
     if (id is BigInt) {
       return id;
     } else if (id is int) {
@@ -141,8 +143,14 @@ class _IdentifierBase extends Equatable implements Identifier {
   }
 
   @override
-  String toString() => storage.toString();
+  String toString() => _storage.toString();
 
   @override
-  List<Object?> get props => [storage];
+  bool operator ==(Object other) =>
+      other is Identifier &&
+      other.runtimeType == Identifier &&
+      _storage == other._storage;
+
+  @override
+  int get hashCode => _storage.hashCode;
 }

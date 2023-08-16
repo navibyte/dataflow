@@ -308,7 +308,7 @@ This is demonstrated below:
 
 ```dart
   // Identifiers can be based on String, int or BigInt values, here a String id.
-  final dashId = Identifier.fromString('dash-2018');
+  const dashId = Identifier.fromString('dash-2018');
   if(dashId.isInt) {
     final intId = dashId.asInt();
   } else {
