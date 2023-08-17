@@ -2,6 +2,10 @@
 
 [![pub package](https://img.shields.io/pub/v/datatools.svg)](https://pub.dev/packages/datatools) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
+✨ New (2023-08): The version 1.0.0 requiring [Dart 3](https://dart.dev/resources/dart-3-migration). When Dart 2 is required, please use the older version
+[datatools 0.8.2](https://pub.dev/packages/datatools/versions/0.8.2)
+supporting Dart 2.
+
 Key features:
 * Fetch data from HTTP and file resources and other data sources.
 * Fetch API abstraction (content, control data, exceptions, fetch interface).
@@ -130,20 +134,20 @@ Key methods and properties available on the `Content` interface are:
 
 ## Installing
 
-The package supports Dart [null-safety](https://dart.dev/null-safety) and 
-using it requires at least
-[Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
+The package requires at least
+[Dart 3](https://dart.dev/resources/dart-3-migration)
 from the stable channel. 
 
 In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  datatools: ^0.8.2
+  datatools: ^1.0.0
 ```
 
-All dependencies used by `datatools` are also ready for 
-[null-safety](https://dart.dev/null-safety)!
+If you are not ready to use Dart 3, then you should check the older version
+[datatools 0.8.2](https://pub.dev/packages/datatools/versions/0.8.2)
+supporting Dart 2.
 
 ## Libraries
 
