@@ -4,9 +4,12 @@
 //
 // Docs: https://github.com/navibyte/dataflow
 
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 import '/src/data.dart';
+import '/src/utils/json/encode_utils.dart';
 import '/src/values.dart';
 
 import 'entity.dart';
@@ -39,6 +42,22 @@ base class EntityBase implements Entity {
         properties: DataObject.view(properties),
       );
 
+  /// A new entity from JSON Object containg an optional identifier in "id" and
+  /// the required properties (JSON Object) in "properties".
+  factory EntityBase.fromJson(Map<String, Object?> json) => EntityBase.view(
+        id: json['id'] as String?,
+        properties: json['properties']! as Map<String, Object?>,
+      );
+
+  /// A new entity from JSON Object containg an optional identifier in "id" and
+  /// the required properties (JSON Object) in "properties".
+  ///
+  /// The underlying map is an object tree as parsed by the standard
+  /// `json.decode()` of the `dart:convert` package.
+  factory EntityBase.decodeJson(String source) => EntityBase.fromJson(
+        json.decode(source) as Map<String, Object?>,
+      );
+
   /// An empty entity with empty properties and without id.
   factory EntityBase.empty() => EntityBase(properties: DataObject.empty());
 
@@ -47,6 +66,22 @@ base class EntityBase implements Entity {
 
   @override
   final DataObject properties;
+
+  @override
+  Map<String, Object?> toJson() => {
+        if (id != null) 'id': id,
+        'properties': properties.toJson(),
+      };
+
+  @override
+  String encodeJson({Object Function(DateTime time)? encodeTime}) =>
+      json.encode(
+        toJson(),
+        toEncodable: encodeTime != null
+            ? (dynamic object) =>
+                encodeJsonObject(object, encodeTime: encodeTime)
+            : encodeJsonObject,
+      );
 
   @override
   String toString() {

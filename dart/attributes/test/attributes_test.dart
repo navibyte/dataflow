@@ -80,6 +80,33 @@ Future<void> main() async {
         '{id: 123, properties: {some: [100, 101], other: text}}',
       );
     });
+
+    test('encodeJson', () {
+      final obj1 = Entity.view(
+        id: 123,
+        properties: {
+          'some': 100,
+          'other': 'text',
+          'date': DateTime(2020, 10, 02),
+        },
+      );
+      const json1 = '{"id":"123","properties":{"some":100,"other":"text",'
+          '"date":"2020-10-02T00:00:00.000"}}';
+      expect(obj1.encodeJson(), json1);
+      expect(Entity.decodeJson(json1).encodeJson(), json1);
+      final obj2 = Entity.view(
+        id: '123',
+        properties: {
+          'some': [100, 101],
+          'other': 'text',
+          'date': DateTime(2020, 10, 02),
+        },
+      );
+      const json2 = '{"id":"123","properties":{"some":[100,101],"other":"text",'
+          '"date":2020}}';
+      expect(obj2.encodeJson(encodeTime: (date) => date.year), json2);
+      expect(Entity.decodeJson(json2).encodeJson(), json2);
+    });
   });
 
   group('Test DataArray', () {
@@ -174,6 +201,37 @@ Future<void> main() async {
         ).toString(),
         '[true, {some: [100, 101], other: text}]',
       );
+    });
+
+    test('encodeJson and decodeJson', () {
+      final obj1 = DataArray.view(
+        [
+          {'x': 10.1, 'y': 20.1},
+          {
+            'some': 100,
+            'other': 'text',
+            'date': DateTime(2020, 10, 02),
+          },
+        ],
+      );
+      const json1 = '[{"x":10.1,"y":20.1},{"some":100,"other":"text",'
+          '"date":"2020-10-02T00:00:00.000"}]';
+      expect(obj1.encodeJson(), json1);
+      expect(DataArray.decodeJson(json1).encodeJson(), json1);
+      final obj2 = DataArray.view(
+        [
+          [10.1, 20.1],
+          {
+            'some': [100, 101],
+            'other': 'text',
+            'date': DateTime(2020, 10, 02),
+          },
+        ],
+      );
+      const json2 = '[[10.1,20.1],{"some":[100,101],"other":"text",'
+          '"date":2020}]';
+      expect(obj2.encodeJson(encodeTime: (date) => date.year), json2);
+      expect(DataArray.decodeJson(json2).encodeJson(), json2);
     });
   });
 
@@ -271,6 +329,31 @@ Future<void> main() async {
         ).toString(),
         '{some: [100, 101], other: text}',
       );
+    });
+
+    test('encodeJson and decodeJson', () {
+      final obj1 = DataObject.view(
+        {
+          'some': 100,
+          'other': 'text',
+          'date': DateTime(2020, 10, 02),
+        },
+      );
+      const json1 = '{"some":100,"other":"text",'
+          '"date":"2020-10-02T00:00:00.000"}';
+      expect(obj1.encodeJson(), json1);
+      expect(DataObject.decodeJson(json1).encodeJson(), json1);
+      final obj2 = DataObject.view(
+        {
+          'some': [100, 101],
+          'other': 'text',
+          'date': DateTime(2020, 10, 02),
+        },
+      );
+      const json2 = '{"some":[100,101],"other":"text",'
+          '"date":2020}';
+      expect(obj2.encodeJson(encodeTime: (date) => date.year), json2);
+      expect(DataObject.decodeJson(json2).encodeJson(), json2);
     });
   });
 

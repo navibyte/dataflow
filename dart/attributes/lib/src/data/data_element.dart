@@ -22,6 +22,12 @@ import 'data_object.dart';
 /// base implementations, but the known two subtypes are [DataArray] and
 /// [DataObject].
 abstract interface class DataElement<K> implements ValueAccessor<K>, Counted {
+  /// Returns data as an encodable object compatible with `json.encode()`.
+  /// 
+  /// For data arrays the type of the returned value is `Iterable<Object?>`, and
+  /// for data objects `Map<String, Object?>`.
+  dynamic toJson();
+
   /// Encodes this element into a JSON string.
   ///
   /// Any `DateTime` objects contained are encoded using [encodeTime] if

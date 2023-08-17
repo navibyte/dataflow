@@ -7,12 +7,19 @@ NOTE: Version 1.0.0 currently under development.
 ⚠️ Breaking changes:
 - [Classes enhanced with Dart 3 class modifiers #18](https://github.com/navibyte/dataflow/issues/18)
 
+🧩 Features:
+- `toJson()` added to `Entity`, `DataArray` and `DataArray`
+- `fromJson()` and `decodeJson()` added to `Entity` and `EntityBase``
+
+🛠 Refactoring:
+- Fix some toString() methods.
+- `toEncodable()` marked deprecated in `DataArray` and `DataArray`
+
 🛠 Maintenance:
 - The SDK constraint updated from '>=2.12.0 <4.0.0' to '>=3.0.0 <4.0.0'.
 - Mark utility methods with @internal.
 - Remove trunk file for utils.
 - Update copyright texts.
-- Fix some toString() methods.
 
 ## 0.8.2
 

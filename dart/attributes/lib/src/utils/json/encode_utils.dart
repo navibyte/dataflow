@@ -7,6 +7,7 @@
 import 'package:meta/meta.dart';
 
 import '/src/data.dart';
+import '/src/entity.dart';
 
 /// A helper utilility function used on `json.encode()`.
 ///
@@ -16,10 +17,10 @@ Object? encodeJsonObject(
   dynamic object, {
   Object Function(DateTime time)? encodeTime,
 }) {
-  if (object is DataObjectView) {
-    return object.toEncodable();
-  } else if (object is DataArrayView) {
-    return object.toEncodable();
+  if (object is Entity) {
+    return object.toJson();
+  } else if (object is DataElement) {
+    return object.toJson();
   } else if (object is DateTime) {
     return encodeTime != null ? encodeTime(object) : object.toIso8601String();
   }

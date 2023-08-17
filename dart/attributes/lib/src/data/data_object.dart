@@ -198,12 +198,16 @@ base class DataObjectView<Obj extends DataObject, Arr extends DataArray>
       toNullableValueMapOf<String, T>(map, isExposed: isExposed);
 
   /// Returns data as an encodable object compatible with `json.encode()`.
-  Object? toEncodable() => map;
+  @Deprecated('Use toJson instead.')
+  Map<String, Object?> toEncodable() => map;
+
+  @override
+  Map<String, Object?> toJson() => map;
 
   @override
   String encodeJson({Object Function(DateTime time)? encodeTime}) =>
       json.encode(
-        toEncodable(),
+        toJson(),
         toEncodable: encodeTime != null
             ? (dynamic object) =>
                 encodeJsonObject(object, encodeTime: encodeTime)

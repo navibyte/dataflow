@@ -190,12 +190,16 @@ base class DataArrayView<Obj extends DataObject, Arr extends DataArray>
       toNullableValuesOf<T>(list, isExposed: isExposed);
 
   /// Returns data as an encodable object compatible with `json.encode()`.
-  Object? toEncodable() => list;
+  @Deprecated('Use toJson instead.')
+  Iterable<Object?> toEncodable() => list;
+
+  @override
+  Iterable<Object?> toJson() => list;
 
   @override
   String encodeJson({Object Function(DateTime time)? encodeTime}) =>
       json.encode(
-        toEncodable(),
+        toJson(),
         toEncodable: encodeTime != null
             ? (dynamic object) =>
                 encodeJsonObject(object, encodeTime: encodeTime)
