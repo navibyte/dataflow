@@ -1,8 +1,8 @@
 ## 1.0.0
 
-NOTE: Version 1.0.0 currently under development.
-
-✨ New (2023-08): The version 1.0.0 requiring [Dart 3](https://dart.dev/resources/dart-3-migration). When Dart 2 is required, please use version 0.8.x.
+✨ New (2023-08): The version 1.0.0 requiring [Dart 3](https://dart.dev/resources/dart-3-migration). When Dart 2 is required, please use the older version
+[attributes 0.8.2](https://pub.dev/packages/attributes/versions/0.8.2)
+supporting Dart 2.
 
 ⚠️ Breaking changes:
 - [Classes enhanced with Dart 3 class modifiers #18](https://github.com/navibyte/dataflow/issues/18)

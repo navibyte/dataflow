@@ -62,13 +62,13 @@ abstract interface class Entity {
   DataObject get properties;
 
   /// Returns data as an encodable object compatible with `json.encode()`.
-  /// 
+  ///
   /// The returned JSON Object contains an optional identifier in "id" and
   /// the required properties (JSON Object) in "properties".
   Map<String, Object?> toJson();
 
   /// Encodes this entity into a JSON string containing a JSON Object.
-  /// 
+  ///
   /// The returned JSON Object contains an optional identifier in "id" and
   /// the required properties (JSON Object) in "properties".
   ///

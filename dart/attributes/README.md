@@ -5,6 +5,10 @@
 Utilities to handle structured data like values, identifiers, entities, data 
 objects and data arrays. With JSON serialization support.
 
+✨ New (2023-08): The version 1.0.0 requiring [Dart 3](https://dart.dev/resources/dart-3-migration). When Dart 2 is required, please use the older version
+[attributes 0.8.2](https://pub.dev/packages/attributes/versions/0.8.2)
+supporting Dart 2.
+
 Key features:
 * Type-safe and null-safe accessors for data and value properties
 * JSON decoding and encoding for data objects and arrays
@@ -338,11 +342,6 @@ variables from previous examples):
     properties: props);
 ```
 
-The [geocore](https://pub.dev/packages/geocore) package has a `Feature` class
-that extends `Entity`, and has also geospatial `geometry` and `bounds` as 
-fields along with `id` and `properties` fields. That is a *feature* is a
-geospatial *entity* object.
-
 ### Value conversions
 
 Conversions from JSON elements or other dynamic data structures can be converted
@@ -391,20 +390,20 @@ double toDoubleValue(Object? data, {double? min, double? max}) {
 
 ## Installing
 
-The package supports Dart [null-safety](https://dart.dev/null-safety) and 
-using it requires at least
-[Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87)
+The package requires at least
+[Dart 3](https://dart.dev/resources/dart-3-migration)
 from the stable channel. 
 
 In the `pubspec.yaml` of your project add the dependency:
 
 ```yaml
 dependencies:
-  attributes: ^0.8.2
+  attributes: ^1.0.0
 ```
 
-All dependencies used by `attributes` are also ready for 
-[null-safety](https://dart.dev/null-safety)!
+If you are not ready to use Dart 3, then you should check the older version
+[attributes 0.8.2](https://pub.dev/packages/attributes/versions/0.8.2)
+supporting Dart 2.
 
 ## Libraries
 
