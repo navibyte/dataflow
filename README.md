@@ -23,6 +23,11 @@ Code           | Package | Description
 
 ## :newspaper_roll: News
 
+2023-08-17
+* New versions based on [Dart 3](https://dart.dev/resources/dart-3-migration):
+  * [attributes 1.0.0](https://pub.dev/packages/attributes/versions/1.0.0)
+  * [datatools 1.0.0](https://pub.dev/packages/datatools/versions/1.0.0)
+
 2023-03-14
 * Release version 0.8.2 (maintenance fixes)
 
@@ -88,32 +93,6 @@ Please see the [LICENSE](LICENSE).
 ## :star: Links and other resources
 
 Some external links and other resources.
-
-### Dart and Flutter programming
-
-SDKs:
-* [Dart](https://dart.dev/)
-* [Flutter](https://flutter.dev/) 
-
-Latest on SDKs
-* [Dart 2.13](https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067) with new type aliases and more
-* [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) with sound null safety
-* [Flutter 2](https://developers.googleblog.com/2021/03/announcing-flutter-2.html)
-* [What’s New in Flutter 2](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)
-
-Packages
-* [pub.dev](https://pub.dev/)
-
-Null-safety:
-* Dart [null-safety](https://dart.dev/null-safety)
-* The official [null-safety migration guide](https://dart.dev/null-safety/migration-guide)
-* [Preparing the Dart and Flutter ecosystem for null safety](https://medium.com/dartlang/preparing-the-dart-and-flutter-ecosystem-for-null-safety-e550ce72c010)
-
-Guidelines
-* [Effective Dart](https://dart.dev/guides/language/effective-dart)
-
-Roadmaps
-* [Flutter roadmap](https://github.com/flutter/flutter/wiki/Roadmap)
 
 ### Dart and Flutter libraries
 
