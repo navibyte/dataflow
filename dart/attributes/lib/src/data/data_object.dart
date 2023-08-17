@@ -159,6 +159,9 @@ base class DataObjectView<Obj extends DataObject, Arr extends DataArray>
   List<Object?> get props => [map];
 
   @override
+  String toString() => map.toString();
+
+  @override
   int get length => map.length;
 
   @override

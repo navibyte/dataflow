@@ -12,6 +12,7 @@ NOTE: Version 1.0.0 currently under development.
 - Mark utility methods with @internal.
 - Remove trunk file for utils.
 - Update copyright texts.
+- Fix some toString() methods.
 
 ## 0.8.2
 

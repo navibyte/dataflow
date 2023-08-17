@@ -157,6 +157,9 @@ base class DataArrayView<Obj extends DataObject, Arr extends DataArray>
   List<Object?> get props => [list];
 
   @override
+  String toString() => list.toString();
+
+  @override
   int get length => list.length;
 
   @override

@@ -49,6 +49,23 @@ base class EntityBase implements Entity {
   final DataObject properties;
 
   @override
+  String toString() {
+    final buf = StringBuffer()..write('{');
+    if (id != null) {
+      buf
+        ..write('id: ')
+        ..write(id.toString())
+        ..write(', ');
+    }
+    buf
+      ..write('properties: ')
+      ..write(properties)
+      ..write('}');
+
+    return buf.toString();
+  }
+
+  @override
   bool operator ==(Object other) =>
       other is EntityBase &&
       other.runtimeType == EntityBase &&

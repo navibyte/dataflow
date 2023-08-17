@@ -60,6 +60,26 @@ Future<void> main() async {
         ),
       );
     });
+
+    test('toString', () {
+      expect(
+        Entity.view(
+          id: 123,
+          properties: {'some': 100, 'other': 'text'},
+        ).toString(),
+        '{id: 123, properties: {some: 100, other: text}}',
+      );
+      expect(
+        Entity.view(
+          id: '123',
+          properties: {
+            'some': [100, 101],
+            'other': 'text'
+          },
+        ).toString(),
+        '{id: 123, properties: {some: [100, 101], other: text}}',
+      );
+    });
   });
 
   group('Test DataArray', () {
@@ -129,6 +149,31 @@ Future<void> main() async {
         expect(p.toNullableValues<String>(), ['0', '10', '20', '30', null]);
         expect(p.toNullableValues<bool>(), [false, true, true, true, null]);
       }
+    });
+
+    test('toString', () {
+      expect(
+        DataArray.view(
+          [
+            'foo',
+            45,
+            {'some': 100, 'other': 'text'}
+          ],
+        ).toString(),
+        '[foo, 45, {some: 100, other: text}]',
+      );
+      expect(
+        DataArray.view(
+          [
+            true,
+            {
+              'some': [100, 101],
+              'other': 'text'
+            },
+          ],
+        ).toString(),
+        '[true, {some: [100, 101], other: text}]',
+      );
     });
   });
 
@@ -208,6 +253,24 @@ Future<void> main() async {
           {'foo': true, 'bar': true, 'baz': null},
         );
       }
+    });
+
+    test('toString', () {
+      expect(
+        DataObject.view(
+          {'some': 100, 'other': 'text'},
+        ).toString(),
+        '{some: 100, other: text}',
+      );
+      expect(
+        DataObject.view(
+          {
+            'some': [100, 101],
+            'other': 'text'
+          },
+        ).toString(),
+        '{some: [100, 101], other: text}',
+      );
     });
   });
 
